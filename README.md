@@ -45,6 +45,7 @@ The label is `label_ct` (1 when CT wins the round). Use the 28 aggregate columns
 | The 336 fits (16 hours of fitting at four threads per fit; the paper's run took 4.4 hours on four parallel processes) | `python benchmark/run_grid.py --data data --out runs/v1_full --maps de_dust2` (first process), then `... --resume --maps <other maps>` in further processes | `runs/v1_full/jobs/*` (metrics, traces and training matches are in `results/jobs/`) |
 | Tables 2–3, B1–B4; Figure 1 inputs | `python benchmark/evaluate.py --run runs/v1_full --out analyses/v1_full` | `results/evaluation/` |
 | Section 5.3, Table 4, Figure 2, Table B5 | `python benchmark/secondary.py --run runs/v1_full --analysis analyses/v1_full --data data --out results/secondary` | `results/secondary/` |
+| Section 5.4, Figure 3, Tables B6–B7 (breakdown by game situation) | `python benchmark/breakdown.py --run runs/v1_full --analysis analyses/v1_full --data data --out results/breakdown` | `results/breakdown/` |
 | Section 3.3 eligibility audit | `python benchmark/audit_eligibility.py` | `results/eligibility_audit.json` |
 | All tables and figures in the paper | `python paper/make_assets.py` | `paper/CS2RB.md`, `paper/figures/` |
 | PDF | `python paper/build_pdf.py` | `paper/CS2RB.pdf` |

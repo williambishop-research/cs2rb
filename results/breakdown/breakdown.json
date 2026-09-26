@@ -1,0 +1,355 @@
+{
+  "plan": "* Pair: on each map, the validation-selected aggregate and set models at 100%\n  of training matches (the paper's primary pair). For every test state,\n  d = set-model log loss - aggregate-model log loss, each averaged over the\n  four seeds (the same per-state quantity as the benchmark score).\n* Pooling: all seven maps' test states together, state-weighted.\n  Uncertainty: 10,000 resamples of whole matches (a match on several maps is\n  one unit), seed 42; percentile 95% intervals; no multiplicity adjustment.\n* Slices (every slice is reported; none is chosen after seeing results):\n    phase         pre-plant / post-plant (planted flag)\n    players       5v5; even below five; CT +1; CT +2 or more; T +1; T +2 or more\n    alive_total   10; 8-9; 6-7; 4-5; 2-3 players alive in total\n    elapsed       0-15, 15-30, 30-45, 45-60, 60-90, 90+ s since freeze end\n    economy       pistol round; otherwise CT minus T freeze-end equipment:\n                  <= -10k, -10k to -3k, -3k to +3k, +3k to +10k, >= +10k, unknown\n  Per slice: state share, mean d (x 1e-3) with interval, and the slice's share\n  of the total pooled advantage (sum of d in slice / sum of d overall).\n* Disagreement: with each model's four-seed ensemble probability, states\n  where |p_set - p_aggregate| >= 0.05, 0.10, 0.20: share of states, ensemble log\n  loss of each model on them, and the share of those states where the set\n  model's probability is closer to the outcome.\nAll results are descriptive associations within one test period.\nNot anticipated by the plan and reported as found: an alive_total slice of 1\n(one CT alive after a plant, no T alive), which the plan's buckets left out.",
+  "pairs": {
+    "de_dust2": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_mirage": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_inferno": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_ancient": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_nuke": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_anubis": {
+      "aggregate": "mlp",
+      "tokens": "deepsets"
+    },
+    "de_overpass": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    }
+  },
+  "test_states": 711651,
+  "matches": 1048,
+  "resamples": 10000,
+  "seed": 42,
+  "overall": {
+    "gap": -0.0017418398417321321,
+    "lo95": -0.002412041211070276,
+    "hi95": -0.0010870937545415958
+  },
+  "slices": [
+    {
+      "dimension": "phase",
+      "slice": "pre-plant",
+      "states": 592354,
+      "state_share": 0.832365864728638,
+      "gap": -0.001974859791226268,
+      "lo95": -0.0027106089028209428,
+      "hi95": -0.0012575559659299632,
+      "share_of_total_advantage": 0.9437181527592254
+    },
+    {
+      "dimension": "phase",
+      "slice": "post-plant",
+      "states": 119297,
+      "state_share": 0.16763413527136195,
+      "gap": -0.0005848090768122358,
+      "lo95": -0.0016403714262412464,
+      "hi95": 0.0004856240127169621,
+      "share_of_total_advantage": 0.05628184724077446
+    },
+    {
+      "dimension": "players",
+      "slice": "5v5",
+      "states": 282873,
+      "state_share": 0.3974883756223205,
+      "gap": -0.001092429229055336,
+      "lo95": -0.002048775327228669,
+      "hi95": -0.000156479306235589,
+      "share_of_total_advantage": 0.2492926785437066
+    },
+    {
+      "dimension": "players",
+      "slice": "even, below five",
+      "states": 77242,
+      "state_share": 0.1085391575364891,
+      "gap": -0.002543370159059344,
+      "lo95": -0.004453703097893486,
+      "hi95": -0.000662346874377668,
+      "share_of_total_advantage": 0.1584848662625783
+    },
+    {
+      "dimension": "players",
+      "slice": "CT +1",
+      "states": 99170,
+      "state_share": 0.13935201383824375,
+      "gap": -0.0009262466872657142,
+      "lo95": -0.0025438736571909435,
+      "hi95": 0.0006881510281702177,
+      "share_of_total_advantage": 0.07410230153716327
+    },
+    {
+      "dimension": "players",
+      "slice": "CT +2 or more",
+      "states": 84497,
+      "state_share": 0.11873376135212345,
+      "gap": -0.0019814299571051784,
+      "lo95": -0.003088798860264648,
+      "hi95": -0.0008623504524636145,
+      "share_of_total_advantage": 0.1350655933032987
+    },
+    {
+      "dimension": "players",
+      "slice": "T +1",
+      "states": 94742,
+      "state_share": 0.13312986281196823,
+      "gap": -0.002784337003119383,
+      "lo95": -0.0042955511694910955,
+      "hi95": -0.0012646764087332397,
+      "share_of_total_advantage": 0.21280854551986683
+    },
+    {
+      "dimension": "players",
+      "slice": "T +2 or more",
+      "states": 73127,
+      "state_share": 0.102756828838855,
+      "gap": -0.002885854836936948,
+      "lo95": -0.0038085969552827618,
+      "hi95": -0.0019741004140771475,
+      "share_of_total_advantage": 0.17024601483338625
+    },
+    {
+      "dimension": "alive_total",
+      "slice": "10",
+      "states": 282873,
+      "state_share": 0.3974883756223205,
+      "gap": -0.001092429229055336,
+      "lo95": -0.002048775327228669,
+      "hi95": -0.000156479306235589,
+      "share_of_total_advantage": 0.2492926785437066
+    },
+    {
+      "dimension": "alive_total",
+      "slice": "8-9",
+      "states": 147036,
+      "state_share": 0.20661251090773428,
+      "gap": -0.003545978204942593,
+      "lo95": -0.004821185913849042,
+      "hi95": -0.00225091407893826,
+      "share_of_total_advantage": 0.42061471037356046
+    },
+    {
+      "dimension": "alive_total",
+      "slice": "6-7",
+      "states": 125965,
+      "state_share": 0.1770038965728988,
+      "gap": -0.0024345328771464944,
+      "lo95": -0.003651338033462333,
+      "hi95": -0.0012328707474949859,
+      "share_of_total_advantage": 0.24739461991019773
+    },
+    {
+      "dimension": "alive_total",
+      "slice": "4-5",
+      "states": 105533,
+      "state_share": 0.14829319427640797,
+      "gap": -0.002087658034192574,
+      "lo95": -0.0032366012723816034,
+      "hi95": -0.0009476036405090982,
+      "share_of_total_advantage": 0.17773475553261153
+    },
+    {
+      "dimension": "alive_total",
+      "slice": "2-3",
+      "states": 45837,
+      "state_share": 0.06440938044069354,
+      "gap": 0.000842654462250004,
+      "lo95": -0.0011798009205869874,
+      "hi95": 0.0028722573855628174,
+      "share_of_total_advantage": -0.031159496148128144
+    },
+    {
+      "dimension": "alive_total",
+      "slice": "1",
+      "states": 4407,
+      "state_share": 0.006192642179944945,
+      "gap": 0.0179671241320728,
+      "lo95": 0.012883734740087308,
+      "hi95": 0.023269175892969406,
+      "share_of_total_advantage": -0.06387726821194815
+    },
+    {
+      "dimension": "elapsed",
+      "slice": "0-15 s",
+      "states": 122000,
+      "state_share": 0.17143234534905452,
+      "gap": 4.1601955945906625e-05,
+      "lo95": -0.0006592747141220076,
+      "hi95": 0.0007445025708284993,
+      "share_of_total_advantage": -0.004094475684872742
+    },
+    {
+      "dimension": "elapsed",
+      "slice": "15-30 s",
+      "states": 120885,
+      "state_share": 0.16986556612721684,
+      "gap": -0.0013386746083673704,
+      "lo95": -0.0021330294427916335,
+      "hi95": -0.0005590495053680352,
+      "share_of_total_advantage": 0.13054858131177333
+    },
+    {
+      "dimension": "elapsed",
+      "slice": "30-45 s",
+      "states": 114807,
+      "state_share": 0.1613248628892533,
+      "gap": -0.0023221875560168717,
+      "lo95": -0.0032712955362454127,
+      "hi95": -0.0013644706360080774,
+      "share_of_total_advantage": 0.2150752210978326
+    },
+    {
+      "dimension": "elapsed",
+      "slice": "45-60 s",
+      "states": 103832,
+      "state_share": 0.1459029777236314,
+      "gap": -0.002528621151685288,
+      "lo95": -0.003572573024920506,
+      "hi95": -0.0014926980368782073,
+      "share_of_total_advantage": 0.21180670388097478
+    },
+    {
+      "dimension": "elapsed",
+      "slice": "60-90 s",
+      "states": 157722,
+      "state_share": 0.22162829814052112,
+      "gap": -0.002943780858860359,
+      "lo95": -0.003990859967972244,
+      "hi95": -0.0019060854475633434,
+      "share_of_total_advantage": 0.3745609247283458
+    },
+    {
+      "dimension": "elapsed",
+      "slice": "90+ s",
+      "states": 92405,
+      "state_share": 0.12984594977032282,
+      "gap": -0.0009672381474469493,
+      "lo95": -0.002105054867829695,
+      "hi95": 0.00020431221090454882,
+      "share_of_total_advantage": 0.07210304466594625
+    },
+    {
+      "dimension": "economy",
+      "slice": "pistol round",
+      "states": 53271,
+      "state_share": 0.07485551204171707,
+      "gap": 4.5898738814479586e-05,
+      "lo95": -0.0022800636789401946,
+      "hi95": 0.0023193641880375755,
+      "share_of_total_advantage": -0.001972496847132807
+    },
+    {
+      "dimension": "economy",
+      "slice": "T richer by 10k+",
+      "states": 89495,
+      "state_share": 0.12575686677880027,
+      "gap": -0.004679935522252555,
+      "lo95": -0.006999011117383714,
+      "hi95": -0.002389636531195249,
+      "share_of_total_advantage": 0.33788067875404415
+    },
+    {
+      "dimension": "economy",
+      "slice": "T richer by 3-10k",
+      "states": 70669,
+      "state_share": 0.09930288863501913,
+      "gap": -0.001689537030283429,
+      "lo95": -0.003867698627216086,
+      "hi95": 0.0005720747604883834,
+      "share_of_total_advantage": 0.09632108736021071
+    },
+    {
+      "dimension": "economy",
+      "slice": "within 3k",
+      "states": 179117,
+      "state_share": 0.25169219181874264,
+      "gap": -0.0014829634458840004,
+      "lo95": -0.0026355745632382463,
+      "hi95": -0.00031307719385481874,
+      "share_of_total_advantage": 0.21428509736604096
+    },
+    {
+      "dimension": "economy",
+      "slice": "CT richer by 3-10k",
+      "states": 191603,
+      "state_share": 0.26923730873700735,
+      "gap": -0.0015125853975086847,
+      "lo95": -0.0026153563616183634,
+      "hi95": -0.0004503790032422736,
+      "share_of_total_advantage": 0.23380130130400498
+    },
+    {
+      "dimension": "economy",
+      "slice": "CT richer by 10k+",
+      "states": 127380,
+      "state_share": 0.1789922307423161,
+      "gap": -0.0011111776641702005,
+      "lo95": -0.002948392136074398,
+      "hi95": 0.0007685005118157733,
+      "share_of_total_advantage": 0.11418510708945354
+    },
+    {
+      "dimension": "economy",
+      "slice": "unknown",
+      "states": 116,
+      "state_share": 0.00016300124639746167,
+      "gap": -0.058765005599540315,
+      "lo95": -0.13081250389218416,
+      "hi95": -0.004770039986726399,
+      "share_of_total_advantage": 0.005499224973378436
+    }
+  ],
+  "disagreement": [
+    {
+      "threshold": 0.05,
+      "states": 129393,
+      "state_share": 0.18182086444057552,
+      "ensemble_ll_set": 0.5926043443031688,
+      "ensemble_ll_aggregate": 0.6018193492161988,
+      "ensemble_ll_difference": -0.009215004913030005,
+      "lo95": -0.012038363858597422,
+      "hi95": -0.006467269658783002,
+      "set_closer_share": 0.5110168247123106,
+      "set_closer_lo95": 0.5046472165006005,
+      "set_closer_hi95": 0.5175268548610181
+    },
+    {
+      "threshold": 0.1,
+      "states": 26229,
+      "state_share": 0.03685654906688812,
+      "ensemble_ll_set": 0.6229010808114811,
+      "ensemble_ll_aggregate": 0.6446569686040096,
+      "ensemble_ll_difference": -0.021755887792528527,
+      "lo95": -0.029955867726193814,
+      "hi95": -0.013851865308522253,
+      "set_closer_share": 0.5066148156620535,
+      "set_closer_lo95": 0.49473363120245856,
+      "set_closer_hi95": 0.5187844240785222
+    },
+    {
+      "threshold": 0.2,
+      "states": 1837,
+      "state_share": 0.0025813214623460097,
+      "ensemble_ll_set": 0.644643551840891,
+      "ensemble_ll_aggregate": 0.7063442968103252,
+      "ensemble_ll_difference": -0.06170074496943419,
+      "lo95": -0.11122257292977354,
+      "hi95": -0.01294147098785567,
+      "set_closer_share": 0.5334784975503538,
+      "set_closer_lo95": 0.4924738825206211,
+      "set_closer_hi95": 0.5744010952652595
+    }
+  ]
+}

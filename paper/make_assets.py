@@ -281,6 +281,68 @@ def main():
     text = put(text, "FIGURE2", "![Figure 2](figures/figure2_timelines.png)\n\n**Figure 2. Two held-out rounds** chosen by a fixed rule "
                "(seed 42; one with a plant, one without), with the full-scale four-seed ensembles of each track's validation-selected model. "
                "Labels show players alive (CT v T); the dashed line marks the first state after the plant.")
+    # Breakdown by game situation (benchmark/breakdown.py)
+    bd_path = args.results / "breakdown" / "breakdown.json"
+    if bd_path.exists():
+        bd = json.loads(bd_path.read_text())
+        dims = [("phase", "Bomb phase"), ("players", "Players alive (CT v T)"), ("alive_total", "Total players alive"),
+                ("elapsed", "Time since freeze end"), ("economy", "Economy (freeze-end equipment)")]
+        rows = []
+        for key, title in dims:
+            for i, r in enumerate([x for x in bd["slices"] if x["dimension"] == key]):
+                rows.append([title if i == 0 else "", r["slice"],
+                             f"{r['states']:,}", f"{r['state_share'] * 100:.1f}%", ci({"point": r["gap"], "lo95": r["lo95"], "hi95": r["hi95"]}),
+                             (lambda v: "0%" if round(v) == 0 else f"{MINUS if v < 0 else ''}{abs(v):.0f}%")(r['share_of_total_advantage'] * 100)])
+        b6 = ("**Table B6. Full-scale gap by game situation**, validation-selected pair, all seven maps pooled "
+              "(test log loss × 10⁻³, 95% match-bootstrap interval; last column: share of the total pooled advantage). "
+              "Slices were fixed before any sliced result was computed; the one-player slice was not anticipated and is reported as found.\n\n") + \
+            table(["Dimension", "Slice", "States", "Share", "Gap", "Share of advantage"], rows,
+                  ["---", "---", "---:", "---:", "---:", "---:"])
+        rows = [[f"≥ {int(r['threshold'] * 100)} points", f"{r['states']:,} ({r['state_share'] * 100:.1f}%)",
+                 f"{r['ensemble_ll_set']:.4f}", f"{r['ensemble_ll_aggregate']:.4f}",
+                 ci({"point": r["ensemble_ll_difference"], "lo95": r["lo95"], "hi95": r["hi95"]}),
+                 f"{r['set_closer_share'] * 100:.1f}% [{r['set_closer_lo95'] * 100:.1f}, {r['set_closer_hi95'] * 100:.1f}]"]
+                for r in bd["disagreement"]]
+        b7 = ("**Table B7. States where the two full-scale ensembles disagree**: ensemble log loss of each model on those states, "
+              "their difference (× 10⁻³, 95% interval) and the share of those states where the set model's probability is closer to the outcome.\n\n") + \
+            table(["Disagreement", "States", "Set model LL", "Aggregate LL", "Difference", "Set model closer"], rows)
+        text = put(text, "BREAKDOWN_TABLES", b6 + "\n\n" + b7)
+        shown = [(title, r) for key, title in dims for r in bd["slices"] if r["dimension"] == key and r["state_share"] >= 0.005]
+        fig, ax = plt.subplots(figsize=(6.2, 0.17 * len(shown) + 1.2))
+        ypos, labels, y = [], [], 0
+        last = None
+        for title, r in shown:
+            if title != last:
+                y += 0.6
+                ax.text(-0.02, y, title, transform=ax.get_yaxis_transform(), ha="right", va="center", fontsize=7.5, fontweight="bold")
+                y += 1
+                last = title
+            XMAX = 4.0
+            if r["lo95"] * 1000 > XMAX:            # off-scale slice: arrow at the edge + its value
+                ax.annotate(f"{r['gap'] * 1000:+.1f} [{r['lo95'] * 1000:+.1f}, {r['hi95'] * 1000:+.1f}]".replace("-", MINUS),
+                            xy=(XMAX, y), xytext=(XMAX - 3.6, y), fontsize=6.5, va="center", color="#1f5f8b",
+                            arrowprops=dict(arrowstyle="->", color="#1f5f8b", lw=0.9))
+            else:
+                ax.errorbar(r["gap"] * 1000, y, xerr=[[(r["gap"] - r["lo95"]) * 1000], [(r["hi95"] - r["gap"]) * 1000]],
+                            fmt="o", color="#1f5f8b", ms=3, elinewidth=0.9, capsize=0)
+            ypos.append(y)
+            labels.append(f"{r['slice']}  ({r['state_share'] * 100:.0f}%)")
+            y += 1
+        ax.axvline(0, color="#888888", lw=0.7)
+        ax.axvline(bd["overall"]["gap"] * 1000, color="#b5542a", lw=0.8, ls="--")
+        ax.set_yticks(ypos)
+        ax.set_yticklabels(labels, fontsize=7)
+        ax.set_ylim(y, 0)
+        ax.set_xlim(-8.0, 4.0)
+        ax.set_xlabel("Set model minus aggregate model, test log loss × 10⁻³ (95% interval)")
+        ax.tick_params(axis="y", length=0)
+        fig.tight_layout()
+        fig.subplots_adjust(left=0.42)
+        fig.savefig(args.figures / "figure3_breakdown.png", dpi=300)
+        plt.close(fig)
+        text = put(text, "FIGURE3", "![Figure 3](figures/figure3_breakdown.png)\n\n**Figure 3. Full-scale gap by game situation** "
+                   "(validation-selected pair, seven maps pooled; slice share of test states in brackets). The dashed line is the overall "
+                   "gap. Slices overlap and describe one test period; slices under 0.5% of states are in Table B6 only.")
     args.paper.write_text(text, encoding="utf-8")
     print("assets written")
 

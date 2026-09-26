@@ -6,7 +6,7 @@ Version 1.0 · September 2026 · Data: https://doi.org/10.5281/zenodo.22970589 �
 
 ## Abstract
 
-Round-win probabilities help analysts review Counter-Strike rounds. We ask how the advantage of individual-player models over aggregate models changes as training data grow. CS2RB v1.0 contains 4,768,984 live states from 12,742 professional Counter-Strike 2 map recordings (5,725 matches on seven maps, January–August 2026). States in which the round is already decided are removed by rules that use only information available at that moment, validated against exact events re-parsed from raw recordings. Under frozen chronological splits, we fit XGBoost and a multilayer perceptron (MLP) on 28 team-level features. We also fit Deep Sets and a Set Transformer, which add one vector per player. Each model is trained on 20%, 50% and 100% of the training matches with four seeds (336 fits), and models are selected on validation data only. Pooled over maps, the validation-selected set model has lower test log loss than the selected aggregate model at every scale: by 2.33 × 10⁻³ (95% interval 1.90–2.78) at 20% and 1.74 × 10⁻³ (1.09–2.41) at 100%. The change, +0.59 × 10⁻³ (−0.17 to +1.35), is not distinguishable from zero. Against XGBoost alone, the advantage narrows by about 3.3 × 10⁻³, because gradient boosting gains most from additional data; against the MLP it does not change. The player-level advantage is small, persistent and varies by map. The data, code and outputs of all 336 fits are public.
+Round-win probabilities help analysts review Counter-Strike rounds. We ask how the advantage of individual-player models over aggregate models changes as training data grow. CS2RB v1.0 contains 4,768,984 live states from 12,742 professional Counter-Strike 2 map recordings (5,725 matches on seven maps, January–August 2026). States in which the round is already decided are removed by rules that use only information available at that moment, validated against exact events re-parsed from raw recordings. Under frozen chronological splits, we fit XGBoost and a multilayer perceptron (MLP) on 28 team-level features. We also fit Deep Sets and a Set Transformer, which add one vector per player. Each model is trained on 20%, 50% and 100% of the training matches with four seeds (336 fits), and models are selected on validation data only. Pooled over maps, the validation-selected set model has lower test log loss than the selected aggregate model at every scale: by 2.33 × 10⁻³ (95% interval 1.90–2.78) at 20% and 1.74 × 10⁻³ (1.09–2.41) at 100%. The change, +0.59 × 10⁻³ (−0.17 to +1.35), is not distinguishable from zero. Against XGBoost alone, the advantage narrows by about 3.3 × 10⁻³, because gradient boosting gains most from additional data; against the MLP it does not change. In a pre-specified descriptive breakdown, the advantage concentrates before the bomb plant and after the opening kills, and is absent at round start and in pistol rounds. The player-level advantage is small, persistent and varies by map. The data, code and outputs of all 336 fits are public.
 
 ## 1 Introduction
 
@@ -168,6 +168,24 @@ Three checks leave the conclusions unchanged.
 - **Weighting.** Weighting every round equally instead of every state gives a selected-pair change of +0.02 × 10⁻³ (−0.67 to +0.70), with gaps of −1.91, −2.22 and −1.90 × 10⁻³ at the three scales (Table B4).
 - **Reproducibility.** Refitting a job on the same machine and package versions reproduces its predictions bit for bit; we checked this for XGBoost, MLP and Deep Sets fits.
 
+### 5.4 Where the advantage comes from
+
+To see where the player-level advantage arises, we split the full-scale test states of the validation-selected pair by game situation (Figure 3; every slice is in Table B6). The slices and statistics were fixed before any sliced result was computed. The slices overlap, describe one test period and are not causal.
+
+- **Bomb phase.** Pre-plant states (83% of states) carry 94% of the advantage, with a gap of −1.97 × 10⁻³ (−2.71 to −1.26). After the plant the gap is −0.58 (−1.64 to +0.49).
+- **Players alive.** The gap is smallest at 5v5 (−1.09) and largest just after the opening kills. With 8–9 players alive it is −3.55 (−4.82 to −2.25), which is 42% of the total advantage from 21% of states. It is larger when T has the player advantage (−2.78 at T +1, −2.89 at T +2 or more) than when CT is one player up (−0.93, −2.54 to +0.69).
+- **Late rounds.** With 2–3 players alive the gap is +0.84 (−1.18 to +2.87). With a single CT left after a plant (0.6% of states, a slice the plan did not anticipate) the set model is worse, by 18.0 (12.9 to 23.3). These late slices hold most of the residual post-defusal states: in the audited rounds, 109 of the 121 residual states had three or fewer players alive, and 28 of the 78 one-player states came after the defusal.
+- **Time.** The gap is zero in the first 15 s after freeze end (+0.04) and grows to −2.94 (−3.99 to −1.91) at 60–90 s.
+- **Economy.** It is absent in pistol rounds (+0.05) and largest when T's freeze-end equipment is worth at least 10,000 more than CT's (−4.68, −7.00 to −2.39).
+
+Disagreements between the two full-scale ensembles show the same asymmetry from another angle (Table B7). When their probabilities differ by at least 10 percentage points (3.7% of states), the set model's log loss on those states is lower by 21.8 × 10⁻³ (13.9 to 30.0). Yet it is closer to the outcome in only 50.7% of them (49.5–51.9%). The player-level model is not right more often when the two disagree; it is less often confidently wrong.
+
+<!-- FIGURE3:start -->
+![Figure 3](figures/figure3_breakdown.png)
+
+**Figure 3. Full-scale gap by game situation** (validation-selected pair, seven maps pooled; slice share of test states in brackets). The dashed line is the overall gap. Slices overlap and describe one test period; slices under 0.5% of states are in Table B6 only.
+<!-- FIGURE3:end -->
+
 ## 6 Using the models for round review
 
 For round review, one forecast per state is more useful than four. At full scale we average the four seed models of each family and choose, on validation loss only, one aggregate ensemble and one player-level ensemble. The chosen aggregate ensemble is the MLP on every map; the chosen player-level ensemble is the Set Transformer on six maps and Deep Sets on Anubis. Table 4 reports their test performance. Averaging seeds lowers test loss by 1.4–2.5 × 10⁻³ relative to single fits. The player-level ensemble has lower test loss than the aggregate ensemble on all seven maps, by 0.6–4.3 × 10⁻³. Both are well calibrated: the expected calibration error over ten probability bins is 0.007–0.016 on every map.
@@ -204,6 +222,8 @@ Figure 2 shows two held-out Dust2 rounds chosen by a fixed rule rather than for 
 ## 7 Discussion and limitations
 
 The answer to the paper's question depends on the aggregate baseline. Against gradient boosting, individual-player models gain most when training data are scarce, and that gain shrinks by about 60–65% between 20% and 100% of the training matches. Against a neural aggregate model, the advantage stays at about 2 × 10⁻³ throughout. With validation-based selection over both, the set models remain ahead at full scale by 1.74 × 10⁻³ pooled, with no detectable narrowing. This is consistent with the player-level representation carrying information that the 28 team summaries do not, information that the aggregate models do not recover from more matches within this range of data. The advantage is small in absolute terms, about 0.4% of the loss. A practical choice between the two should therefore also weigh training cost and operational simplicity.
+
+The breakdown in Section 5.4 locates the advantage in the middle of the round: before the plant, once the opening kills have made the situation uneven. There, where each remaining player stands plausibly matters more than the team totals show. Early in the round and in pistol rounds, the two representations predict equally well. When the two models disagree, the player-level model avoids confident errors rather than being right more often. These are descriptive patterns in one test period; the slices overlap, and they do not show why the representations differ.
 
 Unlike ESTA [4], where an aggregate MLP beat both set models, both set models here beat the MLP at every scale. The two studies differ in game, sampling rate, features and model settings, so this difference cannot be attributed to any one cause. An earlier, unreleased version of this study, built before the corrections in Section 3, suggested that aggregate models caught up with the set models on some maps. One of those corrections restored living players that the earlier export had dropped from the player tokens in 8% of recordings. That defect handicapped only the set models.
 
@@ -345,6 +365,48 @@ Generative AI tools assisted with software development, analysis and editing. Th
 | Set Transformer | 84 | 9 | 13 | 0 | 13.5 |
 | XGBoost | 84 | 202 | 307 | 0 | 0.3 |
 <!-- APPENDIXB:end -->
+
+<!-- BREAKDOWN_TABLES:start -->
+**Table B6. Full-scale gap by game situation**, validation-selected pair, all seven maps pooled (test log loss × 10⁻³, 95% match-bootstrap interval; last column: share of the total pooled advantage). Slices were fixed before any sliced result was computed; the one-player slice was not anticipated and is reported as found.
+
+| Dimension | Slice | States | Share | Gap | Share of advantage |
+|---|---|---:|---:|---:|---:|
+| Bomb phase | pre-plant | 592,354 | 83.2% | −1.97 [−2.71, −1.26] | 94% |
+|  | post-plant | 119,297 | 16.8% | −0.58 [−1.64, +0.49] | 6% |
+| Players alive (CT v T) | 5v5 | 282,873 | 39.7% | −1.09 [−2.05, −0.16] | 25% |
+|  | even, below five | 77,242 | 10.9% | −2.54 [−4.45, −0.66] | 16% |
+|  | CT +1 | 99,170 | 13.9% | −0.93 [−2.54, +0.69] | 7% |
+|  | CT +2 or more | 84,497 | 11.9% | −1.98 [−3.09, −0.86] | 14% |
+|  | T +1 | 94,742 | 13.3% | −2.78 [−4.30, −1.26] | 21% |
+|  | T +2 or more | 73,127 | 10.3% | −2.89 [−3.81, −1.97] | 17% |
+| Total players alive | 10 | 282,873 | 39.7% | −1.09 [−2.05, −0.16] | 25% |
+|  | 8-9 | 147,036 | 20.7% | −3.55 [−4.82, −2.25] | 42% |
+|  | 6-7 | 125,965 | 17.7% | −2.43 [−3.65, −1.23] | 25% |
+|  | 4-5 | 105,533 | 14.8% | −2.09 [−3.24, −0.95] | 18% |
+|  | 2-3 | 45,837 | 6.4% | +0.84 [−1.18, +2.87] | −3% |
+|  | 1 | 4,407 | 0.6% | +17.97 [+12.88, +23.27] | −6% |
+| Time since freeze end | 0-15 s | 122,000 | 17.1% | +0.04 [−0.66, +0.74] | 0% |
+|  | 15-30 s | 120,885 | 17.0% | −1.34 [−2.13, −0.56] | 13% |
+|  | 30-45 s | 114,807 | 16.1% | −2.32 [−3.27, −1.36] | 22% |
+|  | 45-60 s | 103,832 | 14.6% | −2.53 [−3.57, −1.49] | 21% |
+|  | 60-90 s | 157,722 | 22.2% | −2.94 [−3.99, −1.91] | 37% |
+|  | 90+ s | 92,405 | 13.0% | −0.97 [−2.11, +0.20] | 7% |
+| Economy (freeze-end equipment) | pistol round | 53,271 | 7.5% | +0.05 [−2.28, +2.32] | 0% |
+|  | T richer by 10k+ | 89,495 | 12.6% | −4.68 [−7.00, −2.39] | 34% |
+|  | T richer by 3-10k | 70,669 | 9.9% | −1.69 [−3.87, +0.57] | 10% |
+|  | within 3k | 179,117 | 25.2% | −1.48 [−2.64, −0.31] | 21% |
+|  | CT richer by 3-10k | 191,603 | 26.9% | −1.51 [−2.62, −0.45] | 23% |
+|  | CT richer by 10k+ | 127,380 | 17.9% | −1.11 [−2.95, +0.77] | 11% |
+|  | unknown | 116 | 0.0% | −58.77 [−130.81, −4.77] | 1% |
+
+**Table B7. States where the two full-scale ensembles disagree**: ensemble log loss of each model on those states, their difference (× 10⁻³, 95% interval) and the share of those states where the set model's probability is closer to the outcome.
+
+| Disagreement | States | Set model LL | Aggregate LL | Difference | Set model closer |
+|---|---:|---:|---:|---:|---:|
+| ≥ 5 points | 129,393 (18.2%) | 0.5926 | 0.6018 | −9.22 [−12.04, −6.47] | 51.1% [50.5, 51.8] |
+| ≥ 10 points | 26,229 (3.7%) | 0.6229 | 0.6447 | −21.76 [−29.96, −13.85] | 50.7% [49.5, 51.9] |
+| ≥ 20 points | 1,837 (0.3%) | 0.6446 | 0.7063 | −61.70 [−111.22, −12.94] | 53.3% [49.2, 57.4] |
+<!-- BREAKDOWN_TABLES:end -->
 
 ## Appendix C. Model settings
 
