@@ -1,0 +1,12 @@
+# Runtime used for the published CS2RB v1.0 results (Python 3.13.9, CPU only).
+# Exact versions are also recorded in every run's run.json.
+numpy==2.3.5
+pandas==2.3.3
+pyarrow==22.0.0
+scikit-learn==1.8.0
+xgboost==3.1.2
+threadpoolctl==3.6.0
+torch==2.13.0  # CPU build: pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu
+# paper build only
+reportlab==5.0.0
+matplotlib==3.10.8

@@ -1,0 +1,27 @@
+{
+  "map": "de_inferno",
+  "scale": 0.5,
+  "seed": 31337,
+  "model": "deepsets",
+  "job_id": "de_inferno__s0.5__seed31337__deepsets",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.46173645340707864,
+    "brier": 0.156560752209499,
+    "auc": 0.8506010057836746
+  },
+  "test": {
+    "log_loss": 0.46402220995444887,
+    "brier": 0.1577935413658657,
+    "auc": 0.8469698125888674
+  },
+  "seconds": 22.39144320000196,
+  "started_utc": "2026-09-26T04:54:21.818599+00:00",
+  "completed_utc": "2026-09-26T04:54:44.374547+00:00",
+  "n_train_states": 221232,
+  "n_train_matches": 546,
+  "n_nonempty_train_matches": 546,
+  "n_validation_states": 93731,
+  "n_test_states": 95235,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

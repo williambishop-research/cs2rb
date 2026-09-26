@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_nuke",
+    "scale": 1.0,
+    "seed": 7,
+    "model": "settransformer",
+    "job_id": "de_nuke__s1__seed7__settransformer"
+  },
+  "files": {
+    "metrics.json": "a7ae04ad2ebaa14caa11ebca116fa4b83e63188b7710a2b6a4445cabb92b1acb",
+    "test_predictions.parquet": "afcd2a28970d8bb0d376bf00036d6f543c79b85548882a2a2a12c466e1bc1f1e",
+    "training_matches.json": "778556e8d17d874fd7aa81a1005ba49ab17ece67ede55689541ede2f7b39ee4c",
+    "training_trace.json": "c5d5e37030d9ea37acb2049e5819b2bf67dc4e2c1bce88ff969c3dcbfbaf2839",
+    "validation_predictions.parquet": "9d243eff7b4cbdbbdfe4ad445ecfd1ac965f880494490d2f3990e194e1f72501"
+  }
+}

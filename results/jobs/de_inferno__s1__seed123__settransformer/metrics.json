@@ -1,0 +1,27 @@
+{
+  "map": "de_inferno",
+  "scale": 1.0,
+  "seed": 123,
+  "model": "settransformer",
+  "job_id": "de_inferno__s1__seed123__settransformer",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.45612052071406606,
+    "brier": 0.15457013093433308,
+    "auc": 0.8529056115711745
+  },
+  "test": {
+    "log_loss": 0.45906732133407424,
+    "brier": 0.15643333142656327,
+    "auc": 0.8505221588629169
+  },
+  "seconds": 578.417051299999,
+  "started_utc": "2026-09-26T05:16:16.818477+00:00",
+  "completed_utc": "2026-09-26T05:25:55.336954+00:00",
+  "n_train_states": 439774,
+  "n_train_matches": 1093,
+  "n_nonempty_train_matches": 1093,
+  "n_validation_states": 93731,
+  "n_test_states": 95235,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

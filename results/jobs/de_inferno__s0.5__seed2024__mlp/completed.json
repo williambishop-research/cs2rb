@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_inferno",
+    "scale": 0.5,
+    "seed": 2024,
+    "model": "mlp",
+    "job_id": "de_inferno__s0.5__seed2024__mlp"
+  },
+  "files": {
+    "metrics.json": "7acb345cf1916795285fdc50c85a4c3c7b27619de798d8342e3a144c27f70e08",
+    "test_predictions.parquet": "751d4e1098ba7a0abd86e5cf775e9993c3cbb259a27edc5723e50c69cdbf640d",
+    "training_matches.json": "4c0e8e19f228448dba8f1ebfaa28f37f1d1aab6cc258067c5c4a01f89d658436",
+    "training_trace.json": "6bf407158a019c4ae27b2324564fa890c1dccf192cc7d64327397bad70491b29",
+    "validation_predictions.parquet": "8d38e2f5fabd24bcaf43a843dee006f84960d8095953ae938016ba56383bc85f"
+  }
+}

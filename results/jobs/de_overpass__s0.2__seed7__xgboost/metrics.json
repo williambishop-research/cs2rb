@@ -1,0 +1,27 @@
+{
+  "map": "de_overpass",
+  "scale": 0.2,
+  "seed": 7,
+  "model": "xgboost",
+  "job_id": "de_overpass__s0.2__seed7__xgboost",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.4632261973088283,
+    "brier": 0.1561832355732078,
+    "auc": 0.8487983946902963
+  },
+  "test": {
+    "log_loss": 0.4617545626695136,
+    "brier": 0.15557155508659126,
+    "auc": 0.8491040765787188
+  },
+  "seconds": 5.76444860000629,
+  "started_utc": "2026-09-26T04:07:45.446958+00:00",
+  "completed_utc": "2026-09-26T04:07:51.492670+00:00",
+  "n_train_states": 57913,
+  "n_train_matches": 144,
+  "n_nonempty_train_matches": 144,
+  "n_validation_states": 63880,
+  "n_test_states": 62829,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

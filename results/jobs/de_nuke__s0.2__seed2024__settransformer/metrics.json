@@ -1,0 +1,27 @@
+{
+  "map": "de_nuke",
+  "scale": 0.2,
+  "seed": 2024,
+  "model": "settransformer",
+  "job_id": "de_nuke__s0.2__seed2024__settransformer",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.45254306049919235,
+    "brier": 0.15281649716080384,
+    "auc": 0.8571049809681361
+  },
+  "test": {
+    "log_loss": 0.4527489920217183,
+    "brier": 0.15280297269829324,
+    "auc": 0.8572823077373174
+  },
+  "seconds": 418.87018759999773,
+  "started_utc": "2026-09-26T01:29:28.071949+00:00",
+  "completed_utc": "2026-09-26T01:36:27.282356+00:00",
+  "n_train_states": 108820,
+  "n_train_matches": 293,
+  "n_nonempty_train_matches": 293,
+  "n_validation_states": 115532,
+  "n_test_states": 115593,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

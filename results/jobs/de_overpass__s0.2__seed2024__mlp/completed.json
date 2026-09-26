@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_overpass",
+    "scale": 0.2,
+    "seed": 2024,
+    "model": "mlp",
+    "job_id": "de_overpass__s0.2__seed2024__mlp"
+  },
+  "files": {
+    "metrics.json": "15142cfe258996cfdef2a9170b7bc7755255148120a4af44cebee909a703dd60",
+    "test_predictions.parquet": "4edeeabe530ecc3001671bde2c98823ec116429a6bd3d5a9334dcb7309f95c6c",
+    "training_matches.json": "d0e61b077d916bd1ac3653be1fffc8b7b9e798150a28744f41511e042820bd1f",
+    "training_trace.json": "d78c0e15a9576be8e087b819868a44d6ab0ec5b24281fa17e235e35567435599",
+    "validation_predictions.parquet": "4a21884334000d6eb52c125189577c95a5c82fc8670d6c7a351234f21eb6f11c"
+  }
+}

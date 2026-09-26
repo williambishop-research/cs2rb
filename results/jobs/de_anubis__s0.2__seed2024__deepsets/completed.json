@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_anubis",
+    "scale": 0.2,
+    "seed": 2024,
+    "model": "deepsets",
+    "job_id": "de_anubis__s0.2__seed2024__deepsets"
+  },
+  "files": {
+    "metrics.json": "8c67414b70f35b100dac70ddc4163199c661bd0953d60635d9c970a97f2d04f6",
+    "test_predictions.parquet": "2ca5cf6d617b9a2104a880d65399c5ae3382f133ba4bb45f9776be9ac28bb52f",
+    "training_matches.json": "fa064faa8ed1dd86c14625c2812c55341fc28c461cb89e7bd0238a7b9cdc24ef",
+    "training_trace.json": "c4d55a42b7e860cb7766a5c10ad940e0e319e7a08ebf6db9442dec27bcc94b2b",
+    "validation_predictions.parquet": "6e581ebd0d9526307fb81894b481203bff69a29884907bf0cb57ef6ca8ae1d28"
+  }
+}

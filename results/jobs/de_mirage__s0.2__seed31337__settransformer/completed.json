@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_mirage",
+    "scale": 0.2,
+    "seed": 31337,
+    "model": "settransformer",
+    "job_id": "de_mirage__s0.2__seed31337__settransformer"
+  },
+  "files": {
+    "metrics.json": "25f160af93d8f3814631771689f1b233c13fe760c186c46a02b8ff1679c28f1c",
+    "test_predictions.parquet": "fe570352bb7b5a83caf978c9a6a3874f30a638f1160e93f1ca3ec1217a5e70d8",
+    "training_matches.json": "520ef71399ce98dc7d4b03dac9c2700d5886abd7a807c984cbe4349426c942ed",
+    "training_trace.json": "265aa61cf76f7aeeb6e980a40eb9bcea08f5e93d28a482341ea0d6b6cdce9dff",
+    "validation_predictions.parquet": "13b5a48436735a533cfb6b88e2306f0e6cb4d8aa1ad2d34ed791f0a2d6751a2f"
+  }
+}

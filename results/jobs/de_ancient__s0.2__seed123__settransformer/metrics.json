@@ -1,0 +1,27 @@
+{
+  "map": "de_ancient",
+  "scale": 0.2,
+  "seed": 123,
+  "model": "settransformer",
+  "job_id": "de_ancient__s0.2__seed123__settransformer",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.45618568225242767,
+    "brier": 0.15346093521642773,
+    "auc": 0.8569533478634513
+  },
+  "test": {
+    "log_loss": 0.4532667090588611,
+    "brier": 0.15226194770284224,
+    "auc": 0.8591726862396897
+  },
+  "seconds": 203.0922445000033,
+  "started_utc": "2026-09-26T01:23:48.000689+00:00",
+  "completed_utc": "2026-09-26T01:27:11.447975+00:00",
+  "n_train_states": 103836,
+  "n_train_matches": 294,
+  "n_nonempty_train_matches": 294,
+  "n_validation_states": 112471,
+  "n_test_states": 107770,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

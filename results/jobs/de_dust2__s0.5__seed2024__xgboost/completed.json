@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_dust2",
+    "scale": 0.5,
+    "seed": 2024,
+    "model": "xgboost",
+    "job_id": "de_dust2__s0.5__seed2024__xgboost"
+  },
+  "files": {
+    "metrics.json": "8abe2842a4521245279b112f65c81c1f1d304df85a5afae1f988d649901af781",
+    "test_predictions.parquet": "a36c94323dad28bc1a0f316c866d8028d945ae1aa750589e4ce80d17075951ab",
+    "training_matches.json": "faf75a6e0cf8b4a4bae4733a3ea82edc41b04bc63f439312d4fc8613e2e73a63",
+    "training_trace.json": "3a2230693f17f60dc4c3336cbb7998ff2410a65046dba3647a1e3e0d48d789ae",
+    "validation_predictions.parquet": "0cc80e8ca1e76d2d03c8cfca9fb759f92de25a5e54234b3e3ab296ad302aff3f"
+  }
+}

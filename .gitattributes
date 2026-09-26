@@ -1,0 +1,10 @@
+* text=auto
+*.parquet binary
+*.png binary
+*.pdf binary
+*.npz binary
+# byte-exact: these files are covered by recorded SHA-256 hashes
+data/** -text
+evidence/** -text
+results/** -text
+benchmark/** -text

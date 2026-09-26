@@ -1,0 +1,27 @@
+{
+  "map": "de_overpass",
+  "scale": 0.2,
+  "seed": 31337,
+  "model": "deepsets",
+  "job_id": "de_overpass__s0.2__seed31337__deepsets",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.4502449361862798,
+    "brier": 0.1514366547831103,
+    "auc": 0.8593221199147831
+  },
+  "test": {
+    "log_loss": 0.4563297687602225,
+    "brier": 0.15339662331362267,
+    "auc": 0.8528762327071656
+  },
+  "seconds": 21.2298654000042,
+  "started_utc": "2026-09-26T04:18:16.089419+00:00",
+  "completed_utc": "2026-09-26T04:18:37.504648+00:00",
+  "n_train_states": 57913,
+  "n_train_matches": 144,
+  "n_nonempty_train_matches": 144,
+  "n_validation_states": 63880,
+  "n_test_states": 62829,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

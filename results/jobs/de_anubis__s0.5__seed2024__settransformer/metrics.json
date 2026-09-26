@@ -1,0 +1,27 @@
+{
+  "map": "de_anubis",
+  "scale": 0.5,
+  "seed": 2024,
+  "model": "settransformer",
+  "job_id": "de_anubis__s0.5__seed2024__settransformer",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.4576496592953484,
+    "brier": 0.15566425146861707,
+    "auc": 0.8500546009664678
+  },
+  "test": {
+    "log_loss": 0.4477688977728084,
+    "brier": 0.1517498377341183,
+    "auc": 0.8583957553419113
+  },
+  "seconds": 384.2426097999996,
+  "started_utc": "2026-09-26T04:26:04.977789+00:00",
+  "completed_utc": "2026-09-26T04:32:29.422040+00:00",
+  "n_train_states": 153262,
+  "n_train_matches": 392,
+  "n_nonempty_train_matches": 392,
+  "n_validation_states": 67427,
+  "n_test_states": 65165,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

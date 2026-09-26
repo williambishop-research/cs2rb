@@ -1,0 +1,27 @@
+{
+  "map": "de_nuke",
+  "scale": 1.0,
+  "seed": 123,
+  "model": "mlp",
+  "job_id": "de_nuke__s1__seed123__mlp",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.4522196004435316,
+    "brier": 0.15286068086058002,
+    "auc": 0.8563848395948956
+  },
+  "test": {
+    "log_loss": 0.4516831064096133,
+    "brier": 0.1525311544571294,
+    "auc": 0.8575881204399548
+  },
+  "seconds": 48.957869899997604,
+  "started_utc": "2026-09-26T02:50:22.510822+00:00",
+  "completed_utc": "2026-09-26T02:51:11.817972+00:00",
+  "n_train_states": 536096,
+  "n_train_matches": 1463,
+  "n_nonempty_train_matches": 1463,
+  "n_validation_states": 115532,
+  "n_test_states": 115593,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

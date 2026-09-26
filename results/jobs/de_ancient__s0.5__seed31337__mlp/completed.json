@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_ancient",
+    "scale": 0.5,
+    "seed": 31337,
+    "model": "mlp",
+    "job_id": "de_ancient__s0.5__seed31337__mlp"
+  },
+  "files": {
+    "metrics.json": "bfa1a2808e21d0552c1b74854a79c96f3f7a7b690617d1dce23b45800518d08c",
+    "test_predictions.parquet": "cf02c50bf90fe887a5393517491aab898fede97e562c142010c50e3d7b22b865",
+    "training_matches.json": "2752145154d2948824105b06f92d3a4390d579e0e3a018c71a15011e9bc5d7fe",
+    "training_trace.json": "bb976b40e1f8f4f717c1c18bb921deb57c228c6a9e42d658ad59ac37f71872e1",
+    "validation_predictions.parquet": "1dfb462b70b9dec861d4129d33a0e5694c9297b612ebbf229728b55c2ba4bd11"
+  }
+}

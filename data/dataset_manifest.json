@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "dataset_id": "cs2rb-v1.0",
+  "contract": {
+    "eligibility": "realtime_terminal_screen",
+    "player_tokens": "living_first_ct_t_only",
+    "geometry": "training_only",
+    "split": "frozen",
+    "freeze_end": "estimated_first_movement"
+  },
+  "totals": {
+    "states": 4768984,
+    "rounds": 273053,
+    "recordings": 12742,
+    "matches": 5725
+  },
+  "per_map": {
+    "de_dust2": {
+      "states": 980813,
+      "rounds": 55245,
+      "recordings": 2595,
+      "matches": 2595
+    },
+    "de_mirage": {
+      "states": 799712,
+      "rounds": 47837,
+      "recordings": 2248,
+      "matches": 2248
+    },
+    "de_inferno": {
+      "states": 628740,
+      "rounds": 33361,
+      "recordings": 1561,
+      "matches": 1561
+    },
+    "de_ancient": {
+      "states": 738019,
+      "rounds": 45185,
+      "recordings": 2097,
+      "matches": 2097
+    },
+    "de_nuke": {
+      "states": 767221,
+      "rounds": 44797,
+      "recordings": 2090,
+      "matches": 2090
+    },
+    "de_anubis": {
+      "states": 435812,
+      "rounds": 24315,
+      "recordings": 1120,
+      "matches": 1120
+    },
+    "de_overpass": {
+      "states": 418667,
+      "rounds": 22313,
+      "recordings": 1031,
+      "matches": 1031
+    }
+  },
+  "files": {
+    "matches.parquet": "d611d9796a2557fbcb58aa814403b721c239774b49117fa5ec91f0465824290a",
+    "splits.parquet": "14fac796a394fba7f5e56d31050a510f20d7d765765ff2d1ac5e08b4ca967b2b",
+    "rounds.parquet": "e08952c6ae997e49eab1df697c58c1813e2eb04b0021a0a06d5cebde845a3f20",
+    "geometry.json": "3fdce026b3c6b8db8dcf8da023b4fe3065afc26cf2b8fe9ef3c40abcc95a232c",
+    "states/de_dust2.parquet": "a1001849cb56cca781e64c1c6d298aeee5d63cbc82f219a6dcf85c14a3b49778",
+    "states/de_mirage.parquet": "9d4623cf5ad38b1008b545ccd71c7c2d676ff4480b3406423505f02c32ecd65d",
+    "states/de_inferno.parquet": "ec040805f54d48b9ddc9ae1e5b1ad1ee2795327748def137a1a861fc6133a735",
+    "states/de_ancient.parquet": "9345e629ac3175b1e6cb8cdb0830602b49e2e6f60a6e76403bdd7446e350674c",
+    "states/de_nuke.parquet": "49daf0dc9c1a9c840d3c0a48dbb9d9bb0e1cfde01fe838d9bbec9a641ff58ff1",
+    "states/de_anubis.parquet": "9bf0ec31b62b15ba89714746f478316219cd56890563927b7c19a017500d1fd9",
+    "states/de_overpass.parquet": "de2b5359c57908dfde3a233475d15374121e4fdadb9032b26b065fdcaff3bfd1"
+  },
+  "build_report_sha256": "e228d81f72438f174abee97bc0ccc0cafb926b8bef6d1cc69226176cd1b0f7ad"
+}

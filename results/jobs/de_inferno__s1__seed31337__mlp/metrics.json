@@ -1,0 +1,27 @@
+{
+  "map": "de_inferno",
+  "scale": 1.0,
+  "seed": 31337,
+  "model": "mlp",
+  "job_id": "de_inferno__s1__seed31337__mlp",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.46055473061303753,
+    "brier": 0.156367450059858,
+    "auc": 0.8493896218578606
+  },
+  "test": {
+    "log_loss": 0.46061052359267074,
+    "brier": 0.15693334721113877,
+    "auc": 0.8477631940834836
+  },
+  "seconds": 12.08299260000058,
+  "started_utc": "2026-09-26T05:33:24.888607+00:00",
+  "completed_utc": "2026-09-26T05:33:37.062551+00:00",
+  "n_train_states": 439774,
+  "n_train_matches": 1093,
+  "n_nonempty_train_matches": 1093,
+  "n_validation_states": 93731,
+  "n_test_states": 95235,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

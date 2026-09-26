@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_overpass",
+    "scale": 0.5,
+    "seed": 7,
+    "model": "deepsets",
+    "job_id": "de_overpass__s0.5__seed7__deepsets"
+  },
+  "files": {
+    "metrics.json": "6cf4e35d8f9731f5bcffd71913cd945505aee63eb3fddfe4a7caa7c7bdfa9663",
+    "test_predictions.parquet": "50a164fc3e7242179b2000c07f0942c90265022940a6d05ad152f25f74406db4",
+    "training_matches.json": "c1a215a6b4e04956e39f94dc794ce726c3afb84dae26b64eda16f919f6fec174",
+    "training_trace.json": "0082b48ec5c58b01efbd53a249db146307321fa2073be2e10379d3ee7dac172c",
+    "validation_predictions.parquet": "068356319d64a28ceafee59c3ec8183030a7e40612874b4a689d0ad4a99ff027"
+  }
+}

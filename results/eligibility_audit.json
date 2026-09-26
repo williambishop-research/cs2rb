@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "status": "report_only",
+  "canary_reference": {
+    "rounds": 962,
+    "recordings": 48,
+    "historical_states": 18056,
+    "historical_states_after_resolution": 1309,
+    "historical_states_before_freeze_end": 0,
+    "live_states": 16747,
+    "v1_kept_states": 16851,
+    "v1_live_states_kept": 16730,
+    "v1_live_states_dropped": 17,
+    "v1_kept_states_after_resolution": 121,
+    "v1_kept_after_resolution_share": 0.007180582754732657,
+    "v1_kept_after_resolution_by_raw_win_reason": {
+      "bomb_defused": 120,
+      "time_ran_out": 1
+    },
+    "v1_kept_after_resolution_seconds": {
+      "median": 2.921875,
+      "p90": 6.296875,
+      "max": 16.203125
+    },
+    "historical_after_resolution_removed_share": 0.907563025210084,
+    "kept_by_partition": {
+      "train": 8824,
+      "validation": 7605,
+      "test": 422
+    },
+    "plant_flag_on_before_raw_plant": 0,
+    "plant_flag_on_raw_round_without_plant": 1,
+    "plant_flag_late": 61,
+    "plant_flag_late_seconds_max": 0.96875
+  },
+  "stored_timestamp_reference": {
+    "v1_states_in_rounds_with_stored_plant": 369411,
+    "rounds_with_stored_plant": 18608,
+    "by_partition": {
+      "test": 363993,
+      "validation": 5418
+    },
+    "plant_flag_on_before_stored_plant": 6,
+    "plant_flag_on_before_stored_plant_max_seconds": 28.921875,
+    "plant_flag_late": 2596,
+    "plant_flag_late_max_seconds": 165.140625,
+    "rounds_with_stored_freeze_end": 34299,
+    "freeze_end_estimate_minus_stored_seconds": {
+      "p01": 0.078125,
+      "p05": 0.125,
+      "median": 0.578125,
+      "p95": 1.015625,
+      "p99": 1.0625
+    },
+    "freeze_end_estimate_within_2s_share": 0.9997959124172716,
+    "freeze_end_estimate_earlier_than_stored_share": 2.9155368961194203e-05
+  },
+  "notes": [
+    "Canary recordings are a convenience sample of surviving raw files (mostly training/validation era); counts describe the checked states, not corpus-wide error rates.",
+    "Stored timestamps are database metadata, not re-parsed raw events; they cover rounds from late July 2026 on."
+  ],
+  "inputs": {
+    "reproduction\\recovery\\verified_rounds.parquet": "bd751f2faa021e1f9ebb616d74c923bb235a9503e6702a322c21125ecc66ac55",
+    "reproduction\\retained\\inventory\\round_inventory.parquet": "17b1d559c067c98e77c2b721d8508c8838e0e8c874d419928ac11fe4525a8fa5",
+    "data_v1\\splits.parquet": "14fac796a394fba7f5e56d31050a510f20d7d765765ff2d1ac5e08b4ca967b2b"
+  }
+}

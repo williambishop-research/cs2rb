@@ -1,0 +1,27 @@
+{
+  "map": "de_mirage",
+  "scale": 0.2,
+  "seed": 123,
+  "model": "settransformer",
+  "job_id": "de_mirage__s0.2__seed123__settransformer",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.44999575940062314,
+    "brier": 0.15154898860404442,
+    "auc": 0.8589753625273142
+  },
+  "test": {
+    "log_loss": 0.45347373032409766,
+    "brier": 0.15284722742741083,
+    "auc": 0.8576499006787696
+  },
+  "seconds": 333.9905548999959,
+  "started_utc": "2026-09-26T01:23:34.080719+00:00",
+  "completed_utc": "2026-09-26T01:29:08.472408+00:00",
+  "n_train_states": 110756,
+  "n_train_matches": 315,
+  "n_nonempty_train_matches": 315,
+  "n_validation_states": 120535,
+  "n_test_states": 120289,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

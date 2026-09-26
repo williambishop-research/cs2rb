@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_ancient",
+    "scale": 0.2,
+    "seed": 123,
+    "model": "xgboost",
+    "job_id": "de_ancient__s0.2__seed123__xgboost"
+  },
+  "files": {
+    "metrics.json": "23c53ed67b304c86e209fa26e4aa5d00b3355c62eb6a83700d778d9a793ac3b8",
+    "test_predictions.parquet": "162d48302b985e407d58817b993898bf4d8b1f0b52a6e079c41f5a05c74bb233",
+    "training_matches.json": "a760e89db72c4fcdbec3f874b1c3357573164774977450bec320f04965c1fe8a",
+    "training_trace.json": "27cad6689de2240dd56ce3e6fc443175c5752cd6f69f884911e63173d879d215",
+    "validation_predictions.parquet": "56d0e14babd838e070b0a85ed2860d9cd77f898a76e709c48646006d70cf04a3"
+  }
+}

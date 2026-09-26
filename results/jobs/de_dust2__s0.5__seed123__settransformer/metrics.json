@@ -1,0 +1,27 @@
+{
+  "map": "de_dust2",
+  "scale": 0.5,
+  "seed": 123,
+  "model": "settransformer",
+  "job_id": "de_dust2__s0.5__seed123__settransformer",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.45820544184002293,
+    "brier": 0.1556795963654408,
+    "auc": 0.8512306104508
+  },
+  "test": {
+    "log_loss": 0.45208208897636987,
+    "brier": 0.15294046224969574,
+    "auc": 0.8572611983699184
+  },
+  "seconds": 690.5892400000012,
+  "started_utc": "2026-09-26T02:07:55.142336+00:00",
+  "completed_utc": "2026-09-26T02:19:26.237767+00:00",
+  "n_train_states": 338113,
+  "n_train_matches": 908,
+  "n_nonempty_train_matches": 908,
+  "n_validation_states": 152649,
+  "n_test_states": 144770,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

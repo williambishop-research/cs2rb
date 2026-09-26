@@ -1,0 +1,27 @@
+{
+  "map": "de_mirage",
+  "scale": 0.5,
+  "seed": 7,
+  "model": "mlp",
+  "job_id": "de_mirage__s0.5__seed7__mlp",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.4489778136661357,
+    "brier": 0.15154970131496678,
+    "auc": 0.8593420676982773
+  },
+  "test": {
+    "log_loss": 0.45259243022983164,
+    "brier": 0.15264147895208394,
+    "auc": 0.8582627078338843
+  },
+  "seconds": 24.085588200003258,
+  "started_utc": "2026-09-26T01:43:06.103653+00:00",
+  "completed_utc": "2026-09-26T01:43:30.546506+00:00",
+  "n_train_states": 281093,
+  "n_train_matches": 787,
+  "n_nonempty_train_matches": 787,
+  "n_validation_states": 120535,
+  "n_test_states": 120289,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

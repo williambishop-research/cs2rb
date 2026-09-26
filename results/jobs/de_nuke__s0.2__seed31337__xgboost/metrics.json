@@ -1,0 +1,27 @@
+{
+  "map": "de_nuke",
+  "scale": 0.2,
+  "seed": 31337,
+  "model": "xgboost",
+  "job_id": "de_nuke__s0.2__seed31337__xgboost",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.4605014174956983,
+    "brier": 0.15527779850732626,
+    "auc": 0.8527172139932242
+  },
+  "test": {
+    "log_loss": 0.46040761085037646,
+    "brier": 0.15548593534296867,
+    "auc": 0.8518906642381433
+  },
+  "seconds": 7.697818999993615,
+  "started_utc": "2026-09-26T01:36:28.066315+00:00",
+  "completed_utc": "2026-09-26T01:36:36.094332+00:00",
+  "n_train_states": 108820,
+  "n_train_matches": 293,
+  "n_nonempty_train_matches": 293,
+  "n_validation_states": 115532,
+  "n_test_states": 115593,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

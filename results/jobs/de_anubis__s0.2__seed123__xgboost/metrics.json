@@ -1,0 +1,27 @@
+{
+  "map": "de_anubis",
+  "scale": 0.2,
+  "seed": 123,
+  "model": "xgboost",
+  "job_id": "de_anubis__s0.2__seed123__xgboost",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.46939580914983625,
+    "brier": 0.15948284454829764,
+    "auc": 0.8421990261634623
+  },
+  "test": {
+    "log_loss": 0.4596859861435096,
+    "brier": 0.15530044844670512,
+    "auc": 0.8509511143622008
+  },
+  "seconds": 5.454688199999509,
+  "started_utc": "2026-09-26T04:00:11.286052+00:00",
+  "completed_utc": "2026-09-26T04:00:16.936058+00:00",
+  "n_train_states": 62593,
+  "n_train_matches": 157,
+  "n_nonempty_train_matches": 157,
+  "n_validation_states": 67427,
+  "n_test_states": 65165,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

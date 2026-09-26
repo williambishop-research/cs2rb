@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_anubis",
+    "scale": 1.0,
+    "seed": 123,
+    "model": "settransformer",
+    "job_id": "de_anubis__s1__seed123__settransformer"
+  },
+  "files": {
+    "metrics.json": "532ac164a3b7fd9d4fabd8914e07241b7212c1543ca9a2f4f228495eb0a7b0eb",
+    "test_predictions.parquet": "bec3ec5ddb4fafabb626f779d6d80bf1da5e634bbfec1074509e6de20704f44b",
+    "training_matches.json": "06bcab3662d5b60ea04447ca5518da07b5918e8f54d40ba84336eaaa1a2ddd34",
+    "training_trace.json": "a67f1616f3d34817a260d9e21ee38a7ee1f041e7d141b4d11b815790a48c0b47",
+    "validation_predictions.parquet": "3c65e0bfafaa8aed04d1791f83e2aefb6745e03d9112b9c34f09a7b423375ca4"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_anubis",
+    "scale": 1.0,
+    "seed": 7,
+    "model": "mlp",
+    "job_id": "de_anubis__s1__seed7__mlp"
+  },
+  "files": {
+    "metrics.json": "034f073fcf2fb09992ad02ffec419254b80cbed247782fac729f370082e14dd1",
+    "test_predictions.parquet": "1be173effdd918ffddfc56c1de1773aa6797fed059efa626d44c95323de5b494",
+    "training_matches.json": "06bcab3662d5b60ea04447ca5518da07b5918e8f54d40ba84336eaaa1a2ddd34",
+    "training_trace.json": "d6e067493eacbe095dad75583749359b5f4b88474980645ecdbd0d75c1a8b83c",
+    "validation_predictions.parquet": "4efaa2fc41dc9a5d02265da1b968420cd8e68ec2e634b2d32f2a4b7fb680646c"
+  }
+}

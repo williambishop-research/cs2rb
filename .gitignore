@@ -1,0 +1,6 @@
+# The state tables are distributed through the archive, not git.
+data/states/
+runs/
+analyses/
+__pycache__/
+*.pyc

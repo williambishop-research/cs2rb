@@ -1,0 +1,27 @@
+{
+  "map": "de_mirage",
+  "scale": 1.0,
+  "seed": 2024,
+  "model": "mlp",
+  "job_id": "de_mirage__s1__seed2024__mlp",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.44581769618532285,
+    "brier": 0.15061346212309568,
+    "auc": 0.8607073748385792
+  },
+  "test": {
+    "log_loss": 0.4493357492425957,
+    "brier": 0.15177070930073497,
+    "auc": 0.8597253374751321
+  },
+  "seconds": 48.55058460000146,
+  "started_utc": "2026-09-26T03:22:09.351104+00:00",
+  "completed_utc": "2026-09-26T03:22:58.226121+00:00",
+  "n_train_states": 558888,
+  "n_train_matches": 1574,
+  "n_nonempty_train_matches": 1574,
+  "n_validation_states": 120535,
+  "n_test_states": 120289,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

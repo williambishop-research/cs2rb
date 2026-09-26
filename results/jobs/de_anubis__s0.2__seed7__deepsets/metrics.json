@@ -1,0 +1,27 @@
+{
+  "map": "de_anubis",
+  "scale": 0.2,
+  "seed": 7,
+  "model": "deepsets",
+  "job_id": "de_anubis__s0.2__seed7__deepsets",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.463853292175711,
+    "brier": 0.15770526440109217,
+    "auc": 0.8464877856870877
+  },
+  "test": {
+    "log_loss": 0.45049730236762126,
+    "brier": 0.1524541115614304,
+    "auc": 0.8574634597938187
+  },
+  "seconds": 21.18159989999549,
+  "started_utc": "2026-09-26T03:56:33.685725+00:00",
+  "completed_utc": "2026-09-26T03:56:55.085529+00:00",
+  "n_train_states": 62593,
+  "n_train_matches": 157,
+  "n_nonempty_train_matches": 157,
+  "n_validation_states": 67427,
+  "n_test_states": 65165,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

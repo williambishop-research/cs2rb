@@ -1,0 +1,27 @@
+{
+  "map": "de_nuke",
+  "scale": 0.2,
+  "seed": 2024,
+  "model": "deepsets",
+  "job_id": "de_nuke__s0.2__seed2024__deepsets",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.45366661643345463,
+    "brier": 0.15313305222703064,
+    "auc": 0.8568973723309573
+  },
+  "test": {
+    "log_loss": 0.4543080314285706,
+    "brier": 0.15304738211522984,
+    "auc": 0.8574404338634976
+  },
+  "seconds": 45.78580770001281,
+  "started_utc": "2026-09-26T01:28:41.200721+00:00",
+  "completed_utc": "2026-09-26T01:29:27.311116+00:00",
+  "n_train_states": 108820,
+  "n_train_matches": 293,
+  "n_nonempty_train_matches": 293,
+  "n_validation_states": 115532,
+  "n_test_states": 115593,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

@@ -1,0 +1,27 @@
+{
+  "map": "de_anubis",
+  "scale": 1.0,
+  "seed": 2024,
+  "model": "mlp",
+  "job_id": "de_anubis__s1__seed2024__mlp",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.4554241798231587,
+    "brier": 0.15508018993108721,
+    "auc": 0.8508991750758323
+  },
+  "test": {
+    "log_loss": 0.4457040110988713,
+    "brier": 0.1508952845365791,
+    "auc": 0.8599868288496662
+  },
+  "seconds": 20.032418499991763,
+  "started_utc": "2026-09-26T05:01:41.103795+00:00",
+  "completed_utc": "2026-09-26T05:02:01.281986+00:00",
+  "n_train_states": 303220,
+  "n_train_matches": 784,
+  "n_nonempty_train_matches": 784,
+  "n_validation_states": 67427,
+  "n_test_states": 65165,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

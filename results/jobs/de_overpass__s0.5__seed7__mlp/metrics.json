@@ -1,0 +1,27 @@
+{
+  "map": "de_overpass",
+  "scale": 0.5,
+  "seed": 7,
+  "model": "mlp",
+  "job_id": "de_overpass__s0.5__seed7__mlp",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.44670512941432855,
+    "brier": 0.15068210791590497,
+    "auc": 0.8598585345312849
+  },
+  "test": {
+    "log_loss": 0.451233143072148,
+    "brier": 0.15209832810855275,
+    "auc": 0.8552049225278576
+  },
+  "seconds": 16.19946859999618,
+  "started_utc": "2026-09-26T04:21:07.484216+00:00",
+  "completed_utc": "2026-09-26T04:21:23.915414+00:00",
+  "n_train_states": 145265,
+  "n_train_matches": 361,
+  "n_nonempty_train_matches": 361,
+  "n_validation_states": 63880,
+  "n_test_states": 62829,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

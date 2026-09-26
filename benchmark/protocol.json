@@ -1,0 +1,55 @@
+{
+  "schema_version": 4,
+  "protocol_id": "cs2rb-v1.0-four-family-four-seed",
+  "maps": [
+    "de_dust2",
+    "de_mirage",
+    "de_inferno",
+    "de_ancient",
+    "de_nuke",
+    "de_anubis",
+    "de_overpass"
+  ],
+  "scales": [
+    0.2,
+    0.5,
+    1.0
+  ],
+  "seeds": [
+    7,
+    123,
+    2024,
+    31337
+  ],
+  "models": [
+    "xgboost",
+    "mlp",
+    "deepsets",
+    "settransformer"
+  ],
+  "subset_seed": 42,
+  "threads": 4,
+  "token_dim": 64,
+  "neural_max_epochs": 40,
+  "deep_patience": 3,
+  "mlp_patience": 5,
+  "minimum_validation_improvement": 0.0001,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 42,
+  "probability_clip": 1e-06,
+  "primary_score": "mean individual-fit log loss over four seeds; not ensemble log loss",
+  "track_selection": "minimum mean individual-fit validation log loss across four seeds per map and scale; model name breaks exact ties",
+  "gap": "token minus aggregate log loss",
+  "scale_change": "gap at 100% minus gap at 20%; positive means narrowed token advantage",
+  "uncertainty": "paired global-match bootstrap of mean-seed per-state losses; conditional on fitted models, validation choices and fixed training draw",
+  "application_selection": "minimum ensemble validation log loss among all four families at full scale; mean four seed probabilities",
+  "application_scope": "descriptive kill-free probability movement in contiguous unresolved intervals; no causal attribution",
+  "study_status": "corrected retrospective reanalysis of the v1.0 corpus; the test era had been inspected in the historical v0.1 study; model design fixed on 2026-09-06 before any v1.0 fit",
+  "dataset_contract": {
+    "eligibility": "realtime_terminal_screen",
+    "player_tokens": "living_first_ct_t_only",
+    "geometry": "training_only",
+    "split": "frozen",
+    "freeze_end": "estimated_first_movement"
+  }
+}

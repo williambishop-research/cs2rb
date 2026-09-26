@@ -1,0 +1,27 @@
+{
+  "map": "de_inferno",
+  "scale": 1.0,
+  "seed": 31337,
+  "model": "xgboost",
+  "job_id": "de_inferno__s1__seed31337__xgboost",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.4582523151961302,
+    "brier": 0.15547922606691397,
+    "auc": 0.8509215411902925
+  },
+  "test": {
+    "log_loss": 0.4608441672020095,
+    "brier": 0.15700767229495485,
+    "auc": 0.8479906159723375
+  },
+  "seconds": 8.157919799996307,
+  "started_utc": "2026-09-26T05:33:16.315493+00:00",
+  "completed_utc": "2026-09-26T05:33:24.565627+00:00",
+  "n_train_states": 439774,
+  "n_train_matches": 1093,
+  "n_nonempty_train_matches": 1093,
+  "n_validation_states": 93731,
+  "n_test_states": 95235,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

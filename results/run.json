@@ -1,0 +1,2445 @@
+{
+  "identity": {
+    "schema_version": 4,
+    "data": "C:\\Users\\will\\Desktop\\cs2-round-benchmark\\data_v1",
+    "protocol": {
+      "schema_version": 4,
+      "protocol_id": "cs2rb-v1.0-four-family-four-seed",
+      "maps": [
+        "de_dust2",
+        "de_mirage",
+        "de_inferno",
+        "de_ancient",
+        "de_nuke",
+        "de_anubis",
+        "de_overpass"
+      ],
+      "scales": [
+        0.2,
+        0.5,
+        1.0
+      ],
+      "seeds": [
+        7,
+        123,
+        2024,
+        31337
+      ],
+      "models": [
+        "xgboost",
+        "mlp",
+        "deepsets",
+        "settransformer"
+      ],
+      "subset_seed": 42,
+      "threads": 4,
+      "token_dim": 64,
+      "neural_max_epochs": 40,
+      "deep_patience": 3,
+      "mlp_patience": 5,
+      "minimum_validation_improvement": 0.0001,
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 42,
+      "probability_clip": 1e-06,
+      "primary_score": "mean individual-fit log loss over four seeds; not ensemble log loss",
+      "track_selection": "minimum mean individual-fit validation log loss across four seeds per map and scale; model name breaks exact ties",
+      "gap": "token minus aggregate log loss",
+      "scale_change": "gap at 100% minus gap at 20%; positive means narrowed token advantage",
+      "uncertainty": "paired global-match bootstrap of mean-seed per-state losses; conditional on fitted models, validation choices and fixed training draw",
+      "application_selection": "minimum ensemble validation log loss among all four families at full scale; mean four seed probabilities",
+      "application_scope": "descriptive kill-free probability movement in contiguous unresolved intervals; no causal attribution",
+      "study_status": "corrected retrospective reanalysis of the v1.0 corpus; the test era had been inspected in the historical v0.1 study; model design fixed on 2026-09-06 before any v1.0 fit",
+      "dataset_contract": {
+        "eligibility": "realtime_terminal_screen",
+        "player_tokens": "living_first_ct_t_only",
+        "geometry": "training_only",
+        "split": "frozen",
+        "freeze_end": "estimated_first_movement"
+      }
+    },
+    "input_sha256": {
+      "matches.parquet": "d611d9796a2557fbcb58aa814403b721c239774b49117fa5ec91f0465824290a",
+      "splits.parquet": "14fac796a394fba7f5e56d31050a510f20d7d765765ff2d1ac5e08b4ca967b2b",
+      "geometry.json": "3fdce026b3c6b8db8dcf8da023b4fe3065afc26cf2b8fe9ef3c40abcc95a232c",
+      "states/de_dust2.parquet": "a1001849cb56cca781e64c1c6d298aeee5d63cbc82f219a6dcf85c14a3b49778",
+      "states/de_mirage.parquet": "9d4623cf5ad38b1008b545ccd71c7c2d676ff4480b3406423505f02c32ecd65d",
+      "states/de_inferno.parquet": "ec040805f54d48b9ddc9ae1e5b1ad1ee2795327748def137a1a861fc6133a735",
+      "states/de_ancient.parquet": "9345e629ac3175b1e6cb8cdb0830602b49e2e6f60a6e76403bdd7446e350674c",
+      "states/de_nuke.parquet": "49daf0dc9c1a9c840d3c0a48dbb9d9bb0e1cfde01fe838d9bbec9a641ff58ff1",
+      "states/de_anubis.parquet": "9bf0ec31b62b15ba89714746f478316219cd56890563927b7c19a017500d1fd9",
+      "states/de_overpass.parquet": "de2b5359c57908dfde3a233475d15374121e4fdadb9032b26b065fdcaff3bfd1",
+      "dataset_manifest.json": "1d6dd89822fb243010049b9e73a3f29f184ad19e535a77ad7a912548029e1ffa"
+    },
+    "code_sha256": {
+      "run_grid.py": "248b7c67c5ffa003989a299c214ed62b96cfb072747ed30538bba02ab3408115",
+      "models.py": "e5c62941284dbe8702b62c11e2a99214f789f9e8b336f28eed6084f0ab15ce6d"
+    },
+    "protocol_sha256": "f13208e269d46a1f1cabdb25ccb965eb0305e324c6a867ea15e99d5e0487f07b",
+    "python": "3.13.9",
+    "packages": {
+      "numpy": "2.3.5",
+      "pandas": "2.3.3",
+      "pyarrow": "22.0.0",
+      "scikit-learn": "1.8.0",
+      "xgboost": "3.1.2",
+      "torch": "2.13.0+cpu",
+      "threadpoolctl": "3.6.0"
+    }
+  },
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "jobs": [
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.2__seed7__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.2__seed7__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.2__seed7__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.2__seed7__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.2__seed123__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.2__seed123__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.2__seed123__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.2__seed123__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.2__seed2024__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.2__seed2024__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.2__seed2024__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.2__seed2024__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.2__seed31337__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.2__seed31337__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.2__seed31337__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.2__seed31337__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.5__seed7__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.5__seed7__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.5__seed7__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.5__seed7__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.5__seed123__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.5__seed123__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.5__seed123__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.5__seed123__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.5__seed2024__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.5__seed2024__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.5__seed2024__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.5__seed2024__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_dust2__s0.5__seed31337__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_dust2__s0.5__seed31337__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_dust2__s0.5__seed31337__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_dust2__s0.5__seed31337__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_dust2__s1__seed7__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_dust2__s1__seed7__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_dust2__s1__seed7__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_dust2__s1__seed7__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_dust2__s1__seed123__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_dust2__s1__seed123__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_dust2__s1__seed123__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_dust2__s1__seed123__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_dust2__s1__seed2024__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_dust2__s1__seed2024__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_dust2__s1__seed2024__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_dust2__s1__seed2024__settransformer"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_dust2__s1__seed31337__xgboost"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_dust2__s1__seed31337__mlp"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_dust2__s1__seed31337__deepsets"
+    },
+    {
+      "map": "de_dust2",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_dust2__s1__seed31337__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.2__seed7__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.2__seed7__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.2__seed7__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.2__seed7__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.2__seed123__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.2__seed123__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.2__seed123__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.2__seed123__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.2__seed2024__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.2__seed2024__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.2__seed2024__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.2__seed2024__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.2__seed31337__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.2__seed31337__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.2__seed31337__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.2__seed31337__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.5__seed7__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.5__seed7__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.5__seed7__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.5__seed7__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.5__seed123__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.5__seed123__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.5__seed123__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.5__seed123__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.5__seed2024__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.5__seed2024__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.5__seed2024__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.5__seed2024__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_mirage__s0.5__seed31337__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_mirage__s0.5__seed31337__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_mirage__s0.5__seed31337__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_mirage__s0.5__seed31337__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_mirage__s1__seed7__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_mirage__s1__seed7__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_mirage__s1__seed7__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_mirage__s1__seed7__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_mirage__s1__seed123__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_mirage__s1__seed123__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_mirage__s1__seed123__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_mirage__s1__seed123__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_mirage__s1__seed2024__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_mirage__s1__seed2024__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_mirage__s1__seed2024__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_mirage__s1__seed2024__settransformer"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_mirage__s1__seed31337__xgboost"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_mirage__s1__seed31337__mlp"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_mirage__s1__seed31337__deepsets"
+    },
+    {
+      "map": "de_mirage",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_mirage__s1__seed31337__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.2__seed7__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.2__seed7__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.2__seed7__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.2__seed7__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.2__seed123__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.2__seed123__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.2__seed123__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.2__seed123__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.2__seed2024__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.2__seed2024__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.2__seed2024__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.2__seed2024__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.2__seed31337__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.2__seed31337__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.2__seed31337__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.2__seed31337__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.5__seed7__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.5__seed7__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.5__seed7__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.5__seed7__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.5__seed123__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.5__seed123__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.5__seed123__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.5__seed123__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.5__seed2024__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.5__seed2024__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.5__seed2024__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.5__seed2024__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_inferno__s0.5__seed31337__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_inferno__s0.5__seed31337__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_inferno__s0.5__seed31337__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_inferno__s0.5__seed31337__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_inferno__s1__seed7__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_inferno__s1__seed7__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_inferno__s1__seed7__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_inferno__s1__seed7__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_inferno__s1__seed123__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_inferno__s1__seed123__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_inferno__s1__seed123__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_inferno__s1__seed123__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_inferno__s1__seed2024__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_inferno__s1__seed2024__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_inferno__s1__seed2024__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_inferno__s1__seed2024__settransformer"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_inferno__s1__seed31337__xgboost"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_inferno__s1__seed31337__mlp"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_inferno__s1__seed31337__deepsets"
+    },
+    {
+      "map": "de_inferno",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_inferno__s1__seed31337__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.2__seed7__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.2__seed7__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.2__seed7__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.2__seed7__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.2__seed123__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.2__seed123__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.2__seed123__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.2__seed123__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.2__seed2024__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.2__seed2024__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.2__seed2024__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.2__seed2024__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.2__seed31337__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.2__seed31337__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.2__seed31337__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.2__seed31337__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.5__seed7__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.5__seed7__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.5__seed7__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.5__seed7__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.5__seed123__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.5__seed123__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.5__seed123__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.5__seed123__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.5__seed2024__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.5__seed2024__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.5__seed2024__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.5__seed2024__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_ancient__s0.5__seed31337__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_ancient__s0.5__seed31337__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_ancient__s0.5__seed31337__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_ancient__s0.5__seed31337__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_ancient__s1__seed7__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_ancient__s1__seed7__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_ancient__s1__seed7__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_ancient__s1__seed7__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_ancient__s1__seed123__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_ancient__s1__seed123__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_ancient__s1__seed123__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_ancient__s1__seed123__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_ancient__s1__seed2024__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_ancient__s1__seed2024__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_ancient__s1__seed2024__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_ancient__s1__seed2024__settransformer"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_ancient__s1__seed31337__xgboost"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_ancient__s1__seed31337__mlp"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_ancient__s1__seed31337__deepsets"
+    },
+    {
+      "map": "de_ancient",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_ancient__s1__seed31337__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.2__seed7__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.2__seed7__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.2__seed7__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.2__seed7__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.2__seed123__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.2__seed123__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.2__seed123__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.2__seed123__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.2__seed2024__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.2__seed2024__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.2__seed2024__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.2__seed2024__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.2__seed31337__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.2__seed31337__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.2__seed31337__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.2__seed31337__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.5__seed7__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.5__seed7__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.5__seed7__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.5__seed7__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.5__seed123__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.5__seed123__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.5__seed123__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.5__seed123__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.5__seed2024__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.5__seed2024__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.5__seed2024__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.5__seed2024__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_nuke__s0.5__seed31337__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_nuke__s0.5__seed31337__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_nuke__s0.5__seed31337__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_nuke__s0.5__seed31337__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_nuke__s1__seed7__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_nuke__s1__seed7__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_nuke__s1__seed7__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_nuke__s1__seed7__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_nuke__s1__seed123__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_nuke__s1__seed123__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_nuke__s1__seed123__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_nuke__s1__seed123__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_nuke__s1__seed2024__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_nuke__s1__seed2024__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_nuke__s1__seed2024__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_nuke__s1__seed2024__settransformer"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_nuke__s1__seed31337__xgboost"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_nuke__s1__seed31337__mlp"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_nuke__s1__seed31337__deepsets"
+    },
+    {
+      "map": "de_nuke",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_nuke__s1__seed31337__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.2__seed7__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.2__seed7__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.2__seed7__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.2__seed7__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.2__seed123__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.2__seed123__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.2__seed123__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.2__seed123__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.2__seed2024__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.2__seed2024__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.2__seed2024__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.2__seed2024__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.2__seed31337__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.2__seed31337__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.2__seed31337__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.2__seed31337__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.5__seed7__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.5__seed7__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.5__seed7__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.5__seed7__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.5__seed123__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.5__seed123__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.5__seed123__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.5__seed123__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.5__seed2024__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.5__seed2024__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.5__seed2024__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.5__seed2024__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_anubis__s0.5__seed31337__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_anubis__s0.5__seed31337__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_anubis__s0.5__seed31337__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_anubis__s0.5__seed31337__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_anubis__s1__seed7__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_anubis__s1__seed7__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_anubis__s1__seed7__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_anubis__s1__seed7__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_anubis__s1__seed123__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_anubis__s1__seed123__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_anubis__s1__seed123__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_anubis__s1__seed123__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_anubis__s1__seed2024__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_anubis__s1__seed2024__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_anubis__s1__seed2024__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_anubis__s1__seed2024__settransformer"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_anubis__s1__seed31337__xgboost"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_anubis__s1__seed31337__mlp"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_anubis__s1__seed31337__deepsets"
+    },
+    {
+      "map": "de_anubis",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_anubis__s1__seed31337__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.2__seed7__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.2__seed7__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.2__seed7__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.2__seed7__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.2__seed123__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.2__seed123__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.2__seed123__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.2__seed123__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.2__seed2024__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.2__seed2024__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.2__seed2024__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.2__seed2024__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.2__seed31337__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.2__seed31337__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.2__seed31337__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.2,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.2__seed31337__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.5__seed7__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.5__seed7__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.5__seed7__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.5__seed7__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.5__seed123__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.5__seed123__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.5__seed123__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.5__seed123__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.5__seed2024__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.5__seed2024__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.5__seed2024__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.5__seed2024__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_overpass__s0.5__seed31337__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_overpass__s0.5__seed31337__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_overpass__s0.5__seed31337__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 0.5,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_overpass__s0.5__seed31337__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "xgboost",
+      "job_id": "de_overpass__s1__seed7__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "mlp",
+      "job_id": "de_overpass__s1__seed7__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "deepsets",
+      "job_id": "de_overpass__s1__seed7__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 7,
+      "model": "settransformer",
+      "job_id": "de_overpass__s1__seed7__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "xgboost",
+      "job_id": "de_overpass__s1__seed123__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "mlp",
+      "job_id": "de_overpass__s1__seed123__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "deepsets",
+      "job_id": "de_overpass__s1__seed123__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 123,
+      "model": "settransformer",
+      "job_id": "de_overpass__s1__seed123__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "xgboost",
+      "job_id": "de_overpass__s1__seed2024__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "mlp",
+      "job_id": "de_overpass__s1__seed2024__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "deepsets",
+      "job_id": "de_overpass__s1__seed2024__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 2024,
+      "model": "settransformer",
+      "job_id": "de_overpass__s1__seed2024__settransformer"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "xgboost",
+      "job_id": "de_overpass__s1__seed31337__xgboost"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "mlp",
+      "job_id": "de_overpass__s1__seed31337__mlp"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "deepsets",
+      "job_id": "de_overpass__s1__seed31337__deepsets"
+    },
+    {
+      "map": "de_overpass",
+      "scale": 1.0,
+      "seed": 31337,
+      "model": "settransformer",
+      "job_id": "de_overpass__s1__seed31337__settransformer"
+    }
+  ],
+  "started_utc": "2026-09-26T01:15:27.832435+00:00"
+}

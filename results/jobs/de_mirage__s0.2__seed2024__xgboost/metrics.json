@@ -1,0 +1,27 @@
+{
+  "map": "de_mirage",
+  "scale": 0.2,
+  "seed": 2024,
+  "model": "xgboost",
+  "job_id": "de_mirage__s0.2__seed2024__xgboost",
+  "track": "aggregate",
+  "val": {
+    "log_loss": 0.4506294562305706,
+    "brier": 0.15185408544091875,
+    "auc": 0.8582009767064218
+  },
+  "test": {
+    "log_loss": 0.4552502170325948,
+    "brier": 0.15359237627367808,
+    "auc": 0.8561241823664565
+  },
+  "seconds": 9.70342969999183,
+  "started_utc": "2026-09-26T01:29:09.357265+00:00",
+  "completed_utc": "2026-09-26T01:29:19.436541+00:00",
+  "n_train_states": 110756,
+  "n_train_matches": 315,
+  "n_nonempty_train_matches": 315,
+  "n_validation_states": 120535,
+  "n_test_states": 120289,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

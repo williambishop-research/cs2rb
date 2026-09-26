@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_overpass",
+    "scale": 0.2,
+    "seed": 31337,
+    "model": "xgboost",
+    "job_id": "de_overpass__s0.2__seed31337__xgboost"
+  },
+  "files": {
+    "metrics.json": "fb758c4e5fb6e6624731c163e924f36b04faa266d4f317becc93c54083bb8d89",
+    "test_predictions.parquet": "df046be76033fc4f8048ac839f2bf38702e8ab2a29bed69cc287bc5544c2368e",
+    "training_matches.json": "d0e61b077d916bd1ac3653be1fffc8b7b9e798150a28744f41511e042820bd1f",
+    "training_trace.json": "8419f7b4925fe147441a61d24ed0f8e09ae47b3edc199578a1fd52abcf35a793",
+    "validation_predictions.parquet": "28fb2520e6c03013e62a38489f1a38628eee0e9f921fb05c4335d91c09ce4749"
+  }
+}

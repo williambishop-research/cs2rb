@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_dust2",
+    "scale": 0.2,
+    "seed": 123,
+    "model": "deepsets",
+    "job_id": "de_dust2__s0.2__seed123__deepsets"
+  },
+  "files": {
+    "metrics.json": "31e52bfd3a7178ea724348998be03f0861d68b283ea04384a8a96014e53f84bc",
+    "test_predictions.parquet": "8a2f53c84940207851f78d698c09afd0d2947eccbdf3b83e4f69e5395d33e41f",
+    "training_matches.json": "ea6adbb82e84686b49e643a1231341fa38154dc9ce4efc5fff6a09d8abe2f4aa",
+    "training_trace.json": "c465daf7a6e82157ceb5b4afa57f8067d76923834f2b74ba5196c8914fa62314",
+    "validation_predictions.parquet": "3f4ca486f15c64d2bfa0eac4350445b67fc367188f3d38937942dfd5ecce7b90"
+  }
+}

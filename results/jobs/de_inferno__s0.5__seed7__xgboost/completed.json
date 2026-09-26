@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_inferno",
+    "scale": 0.5,
+    "seed": 7,
+    "model": "xgboost",
+    "job_id": "de_inferno__s0.5__seed7__xgboost"
+  },
+  "files": {
+    "metrics.json": "45f411bfeae148f52c447a10646993e17c8e24dafc11ae8a52b5522e428ab890",
+    "test_predictions.parquet": "28c5c2f60911ab28b75ab7fec7f15740d7e065e6fa41ecd2c680dd18640f1d96",
+    "training_matches.json": "4c0e8e19f228448dba8f1ebfaa28f37f1d1aab6cc258067c5c4a01f89d658436",
+    "training_trace.json": "6cbe5b5c8199fdca6f2edaf26e48a09725aa08bee9967258f8b4be5c332ac2e3",
+    "validation_predictions.parquet": "9a8ce112157e1e18d954b99033d94b2a152b6e7ea050a0b1028dbb72358042f4"
+  }
+}

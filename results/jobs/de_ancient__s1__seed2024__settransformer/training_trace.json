@@ -1,0 +1,29 @@
+{
+  "trace": [
+    {
+      "epoch": 1,
+      "validation_log_loss": 0.4502688531122519
+    },
+    {
+      "epoch": 2,
+      "validation_log_loss": 0.4471894764623422
+    },
+    {
+      "epoch": 3,
+      "validation_log_loss": 0.4472897587038905
+    },
+    {
+      "epoch": 4,
+      "validation_log_loss": 0.4472268965052794
+    },
+    {
+      "epoch": 5,
+      "validation_log_loss": 0.4474769125169626
+    }
+  ],
+  "best_epoch": 2,
+  "epochs_run": 5,
+  "epoch_cap": 40,
+  "cap_hit": false,
+  "stopping_reason": "validation_patience"
+}

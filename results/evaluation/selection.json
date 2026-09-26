@@ -1,0 +1,225 @@
+{
+  "criterion": "mean individual-fit VALIDATION log loss across fixed seeds",
+  "seeds": [
+    7,
+    123,
+    2024,
+    31337
+  ],
+  "scores": {
+    "de_ancient__s0.2": {
+      "xgboost": 0.45739721633018504,
+      "mlp": 0.4542003273896624,
+      "deepsets": 0.4518504988641838,
+      "settransformer": 0.4525779209988134
+    },
+    "de_ancient__s0.5": {
+      "xgboost": 0.45089371605621975,
+      "mlp": 0.45124015849674143,
+      "deepsets": 0.44930783593375134,
+      "settransformer": 0.44867773500745106
+    },
+    "de_ancient__s1": {
+      "xgboost": 0.4472231340900119,
+      "mlp": 0.449113092424564,
+      "deepsets": 0.44758551499714117,
+      "settransformer": 0.4466390670648369
+    },
+    "de_anubis__s0.2": {
+      "xgboost": 0.4690920159585604,
+      "mlp": 0.4628546417865673,
+      "deepsets": 0.46322752873599965,
+      "settransformer": 0.46414235543506127
+    },
+    "de_anubis__s0.5": {
+      "xgboost": 0.46273404283034303,
+      "mlp": 0.4588323700614974,
+      "deepsets": 0.4577627449340523,
+      "settransformer": 0.4573467159527852
+    },
+    "de_anubis__s1": {
+      "xgboost": 0.45682593305948155,
+      "mlp": 0.45576063754349794,
+      "deepsets": 0.4543750004260479,
+      "settransformer": 0.454952805942264
+    },
+    "de_dust2__s0.2": {
+      "xgboost": 0.4666241958228688,
+      "mlp": 0.4624201219895988,
+      "deepsets": 0.46191653055824455,
+      "settransformer": 0.4619456443881846
+    },
+    "de_dust2__s0.5": {
+      "xgboost": 0.45988959470376944,
+      "mlp": 0.459300844776797,
+      "deepsets": 0.4591075297719705,
+      "settransformer": 0.4578854984522911
+    },
+    "de_dust2__s1": {
+      "xgboost": 0.4578614473653531,
+      "mlp": 0.45786181292937994,
+      "deepsets": 0.45641041301126567,
+      "settransformer": 0.4559781040453511
+    },
+    "de_inferno__s0.2": {
+      "xgboost": 0.4656488438156746,
+      "mlp": 0.4630461100172373,
+      "deepsets": 0.4610326092685368,
+      "settransformer": 0.4609224297471995
+    },
+    "de_inferno__s0.5": {
+      "xgboost": 0.46086247127398744,
+      "mlp": 0.4601631132779895,
+      "deepsets": 0.4601701047771216,
+      "settransformer": 0.4581570055928052
+    },
+    "de_inferno__s1": {
+      "xgboost": 0.4582491624737078,
+      "mlp": 0.4593974757089734,
+      "deepsets": 0.45719338417705274,
+      "settransformer": 0.45654046040091334
+    },
+    "de_mirage__s0.2": {
+      "xgboost": 0.45066654949674123,
+      "mlp": 0.44894188547901726,
+      "deepsets": 0.4486201785419476,
+      "settransformer": 0.44936205099003307
+    },
+    "de_mirage__s0.5": {
+      "xgboost": 0.4464367539628304,
+      "mlp": 0.4482963057196616,
+      "deepsets": 0.44629421404721126,
+      "settransformer": 0.4461399136350418
+    },
+    "de_mirage__s1": {
+      "xgboost": 0.4447227750668207,
+      "mlp": 0.44546945502336727,
+      "deepsets": 0.44446349558315307,
+      "settransformer": 0.4444228736069549
+    },
+    "de_nuke__s0.2": {
+      "xgboost": 0.46062330340351854,
+      "mlp": 0.45723577380340985,
+      "deepsets": 0.4539738407272191,
+      "settransformer": 0.4531015110299067
+    },
+    "de_nuke__s0.5": {
+      "xgboost": 0.45472023508781795,
+      "mlp": 0.4538643783003155,
+      "deepsets": 0.4493066540108495,
+      "settransformer": 0.44888343931169655
+    },
+    "de_nuke__s1": {
+      "xgboost": 0.451843874565169,
+      "mlp": 0.4527628510065994,
+      "deepsets": 0.4484763605461839,
+      "settransformer": 0.44753465265987447
+    },
+    "de_overpass__s0.2": {
+      "xgboost": 0.46370577134604724,
+      "mlp": 0.4499167753456481,
+      "deepsets": 0.4499008255231004,
+      "settransformer": 0.45032823172749964
+    },
+    "de_overpass__s0.5": {
+      "xgboost": 0.4529431980339374,
+      "mlp": 0.44710952863696896,
+      "deepsets": 0.44721653170233355,
+      "settransformer": 0.4466802791244732
+    },
+    "de_overpass__s1": {
+      "xgboost": 0.4497710937534379,
+      "mlp": 0.4459635296816572,
+      "deepsets": 0.4447928493712487,
+      "settransformer": 0.4440450242391142
+    }
+  },
+  "choices": {
+    "de_ancient__s0.2": {
+      "aggregate": "mlp",
+      "tokens": "deepsets"
+    },
+    "de_ancient__s0.5": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_ancient__s1": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_anubis__s0.2": {
+      "aggregate": "mlp",
+      "tokens": "deepsets"
+    },
+    "de_anubis__s0.5": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    },
+    "de_anubis__s1": {
+      "aggregate": "mlp",
+      "tokens": "deepsets"
+    },
+    "de_dust2__s0.2": {
+      "aggregate": "mlp",
+      "tokens": "deepsets"
+    },
+    "de_dust2__s0.5": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    },
+    "de_dust2__s1": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_inferno__s0.2": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    },
+    "de_inferno__s0.5": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    },
+    "de_inferno__s1": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_mirage__s0.2": {
+      "aggregate": "mlp",
+      "tokens": "deepsets"
+    },
+    "de_mirage__s0.5": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_mirage__s1": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_nuke__s0.2": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    },
+    "de_nuke__s0.5": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    },
+    "de_nuke__s1": {
+      "aggregate": "xgboost",
+      "tokens": "settransformer"
+    },
+    "de_overpass__s0.2": {
+      "aggregate": "mlp",
+      "tokens": "deepsets"
+    },
+    "de_overpass__s0.5": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    },
+    "de_overpass__s1": {
+      "aggregate": "mlp",
+      "tokens": "settransformer"
+    }
+  },
+  "tie_break": "lexicographic model name",
+  "test_used_for_selection": false
+}

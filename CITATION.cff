@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use CS2RB, please cite the paper and the data archive."
+type: dataset
+title: "CS2RB: Aggregate and Individual-Player Models for Round-Win Prediction in Counter-Strike 2"
+version: "1.0"
+date-released: "2026-09-30"
+authors:
+  - family-names: Bishop
+    given-names: William
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22970589"
+    description: "CS2RB v1.0 data archive"
+repository-code: "https://github.com/williambishop-research/cs2rb"
+license:
+  - CC-BY-4.0
+  - MIT
+keywords:
+  - Counter-Strike 2
+  - esports analytics
+  - win probability
+  - set models
+  - training-data scale
+abstract: >-
+  CS2RB v1.0 contains 4,768,984 live in-round game states from 12,742
+  professional Counter-Strike 2 map recordings (5,725 matches, January-August
+  2026, seven maps), with frozen chronological splits, and a fixed 336-fit
+  protocol comparing aggregate models (XGBoost, MLP) with individual-player set
+  models (Deep Sets, Set Transformer) across nested training scales.

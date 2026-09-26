@@ -1,0 +1,27 @@
+{
+  "map": "de_ancient",
+  "scale": 0.5,
+  "seed": 31337,
+  "model": "deepsets",
+  "job_id": "de_ancient__s0.5__seed31337__deepsets",
+  "track": "tokens",
+  "val": {
+    "log_loss": 0.4496385583086679,
+    "brier": 0.15190356831713994,
+    "auc": 0.8593838746754984
+  },
+  "test": {
+    "log_loss": 0.4475392119379309,
+    "brier": 0.1506792662625652,
+    "auc": 0.8620828152778361
+  },
+  "seconds": 59.00748020000174,
+  "started_utc": "2026-09-26T02:23:22.069489+00:00",
+  "completed_utc": "2026-09-26T02:24:21.402168+00:00",
+  "n_train_states": 259273,
+  "n_train_matches": 735,
+  "n_nonempty_train_matches": 735,
+  "n_validation_states": 112471,
+  "n_test_states": 107770,
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241"
+}

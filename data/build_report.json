@@ -1,0 +1,656 @@
+{
+  "schema_version": 1,
+  "started": "2026-09-26T11:03:12",
+  "maps": {
+    "de_dust2": {
+      "historical_states": 1047268,
+      "sidecars_read": 2595,
+      "empty_sidecars": [],
+      "validation_mismatches": {
+        "elapsed_s": 0,
+        "fe_tick": 0,
+        "ct_alive": 0,
+        "t_alive": 0,
+        "ct_hp": 0,
+        "t_hp": 0,
+        "ct_on_site": 0,
+        "t_on_site": 0,
+        "ct_spread": 0,
+        "t_spread": 0,
+        "ct_z_spread": 0,
+        "t_z_spread": 0,
+        "ct_min_dA@historical_centers": 0,
+        "ct_min_dB@historical_centers": 0,
+        "ct_mean_dA@historical_centers": 0,
+        "ct_mean_dB@historical_centers": 0,
+        "t_min_dA@historical_centers": 0,
+        "t_min_dB@historical_centers": 0,
+        "t_mean_dA@historical_centers": 0,
+        "t_mean_dB@historical_centers": 0,
+        "tokens_changed_where_historical_complete": 0
+      },
+      "validation_failures": {},
+      "token_rows_repaired": 62743,
+      "token_rows_repaired_recordings": 202,
+      "token_rows_incomplete_after": 0,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": {
+          "train": 34,
+          "validation": 36,
+          "test": 4
+        },
+        "ct_eliminated": {
+          "train": 17796,
+          "validation": 3745,
+          "test": 3390
+        },
+        "t_eliminated_no_plant": {
+          "train": 17474,
+          "validation": 4067,
+          "test": 3671
+        },
+        "bomb_timer_expired": {
+          "train": 10889,
+          "validation": 2389,
+          "test": 2157
+        },
+        "round_clock_expired": {
+          "train": 3794,
+          "validation": 839,
+          "test": 672
+        },
+        "roster_over_five": {
+          "train": 330,
+          "validation": 4,
+          "test": 7
+        }
+      },
+      "excluded_states": 66455,
+      "partitions": {
+        "train": {
+          "states_before": 730189,
+          "states_after": 683394,
+          "rounds_after": 38672,
+          "matches_before": 1816,
+          "matches_after": 1816
+        },
+        "validation": {
+          "states_before": 162997,
+          "states_after": 152649,
+          "rounds_after": 8492,
+          "matches_before": 389,
+          "matches_after": 389
+        },
+        "test": {
+          "states_before": 154082,
+          "states_after": 144770,
+          "rounds_after": 8081,
+          "matches_before": 390,
+          "matches_after": 390
+        }
+      },
+      "rounds_freeze_end_unobserved": 21,
+      "output_rows": 980813,
+      "output_sha256": "a1001849cb56cca781e64c1c6d298aeee5d63cbc82f219a6dcf85c14a3b49778",
+      "seconds": 78.5
+    },
+    "de_mirage": {
+      "historical_states": 857408,
+      "sidecars_read": 2248,
+      "empty_sidecars": [],
+      "validation_mismatches": {
+        "elapsed_s": 0,
+        "fe_tick": 0,
+        "ct_alive": 0,
+        "t_alive": 0,
+        "ct_hp": 0,
+        "t_hp": 0,
+        "ct_on_site": 0,
+        "t_on_site": 0,
+        "ct_spread": 0,
+        "t_spread": 0,
+        "ct_z_spread": 0,
+        "t_z_spread": 0,
+        "ct_min_dA@historical_centers": 0,
+        "ct_min_dB@historical_centers": 0,
+        "ct_mean_dA@historical_centers": 0,
+        "ct_mean_dB@historical_centers": 0,
+        "t_min_dA@historical_centers": 0,
+        "t_min_dB@historical_centers": 0,
+        "t_mean_dA@historical_centers": 0,
+        "t_mean_dB@historical_centers": 0,
+        "tokens_changed_where_historical_complete": 0
+      },
+      "validation_failures": {},
+      "token_rows_repaired": 54507,
+      "token_rows_repaired_recordings": 190,
+      "token_rows_incomplete_after": 0,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": {
+          "train": 28,
+          "validation": 6,
+          "test": 8
+        },
+        "ct_eliminated": {
+          "train": 14574,
+          "validation": 3198,
+          "test": 2873
+        },
+        "t_eliminated_no_plant": {
+          "train": 17045,
+          "validation": 3811,
+          "test": 3528
+        },
+        "bomb_timer_expired": {
+          "train": 8746,
+          "validation": 1771,
+          "test": 1725
+        },
+        "round_clock_expired": {
+          "train": 3002,
+          "validation": 766,
+          "test": 591
+        },
+        "roster_over_five": {
+          "train": 16,
+          "validation": 11,
+          "test": 0
+        }
+      },
+      "excluded_states": 57696,
+      "partitions": {
+        "train": {
+          "states_before": 599447,
+          "states_after": 558888,
+          "rounds_after": 33465,
+          "matches_before": 1574,
+          "matches_after": 1574
+        },
+        "validation": {
+          "states_before": 129426,
+          "states_after": 120535,
+          "rounds_after": 7168,
+          "matches_before": 336,
+          "matches_after": 336
+        },
+        "test": {
+          "states_before": 128535,
+          "states_after": 120289,
+          "rounds_after": 7204,
+          "matches_before": 338,
+          "matches_after": 338
+        }
+      },
+      "rounds_freeze_end_unobserved": 14,
+      "output_rows": 799712,
+      "output_sha256": "9d4623cf5ad38b1008b545ccd71c7c2d676ff4480b3406423505f02c32ecd65d",
+      "seconds": 72.0
+    },
+    "de_inferno": {
+      "historical_states": 668735,
+      "sidecars_read": 1561,
+      "empty_sidecars": [],
+      "validation_mismatches": {
+        "elapsed_s": 0,
+        "fe_tick": 0,
+        "ct_alive": 0,
+        "t_alive": 0,
+        "ct_hp": 0,
+        "t_hp": 0,
+        "ct_on_site": 0,
+        "t_on_site": 0,
+        "ct_spread": 0,
+        "t_spread": 0,
+        "ct_z_spread": 0,
+        "t_z_spread": 0,
+        "ct_min_dA@historical_centers": 0,
+        "ct_min_dB@historical_centers": 0,
+        "ct_mean_dA@historical_centers": 0,
+        "ct_mean_dB@historical_centers": 0,
+        "t_min_dA@historical_centers": 0,
+        "t_min_dB@historical_centers": 0,
+        "t_mean_dA@historical_centers": 0,
+        "t_mean_dB@historical_centers": 0,
+        "tokens_changed_where_historical_complete": 0
+      },
+      "validation_failures": {},
+      "token_rows_repaired": 38062,
+      "token_rows_repaired_recordings": 120,
+      "token_rows_incomplete_after": 0,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": {
+          "train": 15,
+          "validation": 1,
+          "test": 11
+        },
+        "ct_eliminated": {
+          "train": 9011,
+          "validation": 1764,
+          "test": 1754
+        },
+        "t_eliminated_no_plant": {
+          "train": 10821,
+          "validation": 2434,
+          "test": 2115
+        },
+        "bomb_timer_expired": {
+          "train": 8184,
+          "validation": 1679,
+          "test": 1672
+        },
+        "round_clock_expired": {
+          "train": 2521,
+          "validation": 545,
+          "test": 463
+        },
+        "roster_over_five": {
+          "train": 11,
+          "validation": 1,
+          "test": 0
+        }
+      },
+      "excluded_states": 39995,
+      "partitions": {
+        "train": {
+          "states_before": 468091,
+          "states_after": 439774,
+          "rounds_after": 23389,
+          "matches_before": 1093,
+          "matches_after": 1093
+        },
+        "validation": {
+          "states_before": 99720,
+          "states_after": 93731,
+          "rounds_after": 4945,
+          "matches_before": 234,
+          "matches_after": 234
+        },
+        "test": {
+          "states_before": 100924,
+          "states_after": 95235,
+          "rounds_after": 5027,
+          "matches_before": 234,
+          "matches_after": 234
+        }
+      },
+      "rounds_freeze_end_unobserved": 9,
+      "output_rows": 628740,
+      "output_sha256": "ec040805f54d48b9ddc9ae1e5b1ad1ee2795327748def137a1a861fc6133a735",
+      "seconds": 56.9
+    },
+    "de_ancient": {
+      "historical_states": 791235,
+      "sidecars_read": 2097,
+      "empty_sidecars": [],
+      "validation_mismatches": {
+        "elapsed_s": 0,
+        "fe_tick": 0,
+        "ct_alive": 0,
+        "t_alive": 0,
+        "ct_hp": 0,
+        "t_hp": 0,
+        "ct_on_site": 0,
+        "t_on_site": 0,
+        "ct_spread": 0,
+        "t_spread": 0,
+        "ct_z_spread": 0,
+        "t_z_spread": 0,
+        "ct_min_dA@historical_centers": 0,
+        "ct_min_dB@historical_centers": 0,
+        "ct_mean_dA@historical_centers": 0,
+        "ct_mean_dB@historical_centers": 0,
+        "t_min_dA@historical_centers": 0,
+        "t_min_dB@historical_centers": 0,
+        "t_mean_dA@historical_centers": 0,
+        "t_mean_dB@historical_centers": 0,
+        "tokens_changed_where_historical_complete": 0
+      },
+      "validation_failures": {},
+      "token_rows_repaired": 41703,
+      "token_rows_repaired_recordings": 151,
+      "token_rows_incomplete_after": 0,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": {
+          "train": 52,
+          "validation": 8,
+          "test": 0
+        },
+        "ct_eliminated": {
+          "train": 14911,
+          "validation": 3292,
+          "test": 2749
+        },
+        "t_eliminated_no_plant": {
+          "train": 14103,
+          "validation": 3298,
+          "test": 2924
+        },
+        "bomb_timer_expired": {
+          "train": 8725,
+          "validation": 1960,
+          "test": 1710
+        },
+        "round_clock_expired": {
+          "train": 2293,
+          "validation": 633,
+          "test": 386
+        },
+        "roster_over_five": {
+          "train": 182,
+          "validation": 16,
+          "test": 0
+        }
+      },
+      "excluded_states": 53216,
+      "partitions": {
+        "train": {
+          "states_before": 555174,
+          "states_after": 517778,
+          "rounds_after": 31653,
+          "matches_before": 1470,
+          "matches_after": 1470
+        },
+        "validation": {
+          "states_before": 120952,
+          "states_after": 112471,
+          "rounds_after": 6858,
+          "matches_before": 312,
+          "matches_after": 312
+        },
+        "test": {
+          "states_before": 115109,
+          "states_after": 107770,
+          "rounds_after": 6674,
+          "matches_before": 315,
+          "matches_after": 315
+        }
+      },
+      "rounds_freeze_end_unobserved": 16,
+      "output_rows": 738019,
+      "output_sha256": "9345e629ac3175b1e6cb8cdb0830602b49e2e6f60a6e76403bdd7446e350674c",
+      "seconds": 68.9
+    },
+    "de_nuke": {
+      "historical_states": 821474,
+      "sidecars_read": 2090,
+      "empty_sidecars": [],
+      "validation_mismatches": {
+        "elapsed_s": 0,
+        "fe_tick": 0,
+        "ct_alive": 0,
+        "t_alive": 0,
+        "ct_hp": 0,
+        "t_hp": 0,
+        "ct_on_site": 0,
+        "t_on_site": 0,
+        "ct_spread": 0,
+        "t_spread": 0,
+        "ct_z_spread": 0,
+        "t_z_spread": 0,
+        "ct_min_dA@historical_centers": 0,
+        "ct_min_dB@historical_centers": 0,
+        "ct_mean_dA@historical_centers": 0,
+        "ct_mean_dB@historical_centers": 0,
+        "t_min_dA@historical_centers": 0,
+        "t_min_dB@historical_centers": 0,
+        "t_mean_dA@historical_centers": 0,
+        "t_mean_dB@historical_centers": 0,
+        "tokens_changed_where_historical_complete": 0
+      },
+      "validation_failures": {},
+      "token_rows_repaired": 57875,
+      "token_rows_repaired_recordings": 189,
+      "token_rows_incomplete_after": 0,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": {
+          "train": 16,
+          "validation": 9,
+          "test": 4
+        },
+        "ct_eliminated": {
+          "train": 13568,
+          "validation": 2809,
+          "test": 2545
+        },
+        "t_eliminated_no_plant": {
+          "train": 16165,
+          "validation": 3384,
+          "test": 3422
+        },
+        "bomb_timer_expired": {
+          "train": 7979,
+          "validation": 1711,
+          "test": 1704
+        },
+        "round_clock_expired": {
+          "train": 3078,
+          "validation": 603,
+          "test": 663
+        },
+        "roster_over_five": {
+          "train": 371,
+          "validation": 4,
+          "test": 1
+        }
+      },
+      "excluded_states": 54253,
+      "partitions": {
+        "train": {
+          "states_before": 574509,
+          "states_after": 536096,
+          "rounds_after": 31342,
+          "matches_before": 1463,
+          "matches_after": 1463
+        },
+        "validation": {
+          "states_before": 123492,
+          "states_after": 115532,
+          "rounds_after": 6726,
+          "matches_before": 313,
+          "matches_after": 313
+        },
+        "test": {
+          "states_before": 123473,
+          "states_after": 115593,
+          "rounds_after": 6729,
+          "matches_before": 314,
+          "matches_after": 314
+        }
+      },
+      "rounds_freeze_end_unobserved": 11,
+      "output_rows": 767221,
+      "output_sha256": "49daf0dc9c1a9c840d3c0a48dbb9d9bb0e1cfde01fe838d9bbec9a641ff58ff1",
+      "seconds": 65.1
+    },
+    "de_anubis": {
+      "historical_states": 464953,
+      "sidecars_read": 1120,
+      "empty_sidecars": [],
+      "validation_mismatches": {
+        "elapsed_s": 0,
+        "fe_tick": 0,
+        "ct_alive": 0,
+        "t_alive": 0,
+        "ct_hp": 0,
+        "t_hp": 0,
+        "ct_on_site": 0,
+        "t_on_site": 0,
+        "ct_spread": 0,
+        "t_spread": 0,
+        "ct_z_spread": 0,
+        "t_z_spread": 0,
+        "ct_min_dA@historical_centers": 0,
+        "ct_min_dB@historical_centers": 0,
+        "ct_mean_dA@historical_centers": 0,
+        "ct_mean_dB@historical_centers": 0,
+        "t_min_dA@historical_centers": 0,
+        "t_min_dB@historical_centers": 0,
+        "t_mean_dA@historical_centers": 0,
+        "t_mean_dB@historical_centers": 0,
+        "tokens_changed_where_historical_complete": 0
+      },
+      "validation_failures": {},
+      "token_rows_repaired": 33912,
+      "token_rows_repaired_recordings": 114,
+      "token_rows_incomplete_after": 0,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": {
+          "train": 21,
+          "validation": 12,
+          "test": 8
+        },
+        "ct_eliminated": {
+          "train": 7844,
+          "validation": 1785,
+          "test": 1470
+        },
+        "t_eliminated_no_plant": {
+          "train": 6992,
+          "validation": 1701,
+          "test": 1373
+        },
+        "bomb_timer_expired": {
+          "train": 5447,
+          "validation": 1350,
+          "test": 1158
+        },
+        "round_clock_expired": {
+          "train": 1363,
+          "validation": 338,
+          "test": 234
+        },
+        "roster_over_five": {
+          "train": 149,
+          "validation": 10,
+          "test": 0
+        }
+      },
+      "excluded_states": 29141,
+      "partitions": {
+        "train": {
+          "states_before": 323583,
+          "states_after": 303220,
+          "rounds_after": 16954,
+          "matches_before": 784,
+          "matches_after": 784
+        },
+        "validation": {
+          "states_before": 72192,
+          "states_after": 67427,
+          "rounds_after": 3737,
+          "matches_before": 168,
+          "matches_after": 168
+        },
+        "test": {
+          "states_before": 69178,
+          "states_after": 65165,
+          "rounds_after": 3624,
+          "matches_before": 168,
+          "matches_after": 168
+        }
+      },
+      "rounds_freeze_end_unobserved": 12,
+      "output_rows": 435812,
+      "output_sha256": "9bf0ec31b62b15ba89714746f478316219cd56890563927b7c19a017500d1fd9",
+      "seconds": 37.6
+    },
+    "de_overpass": {
+      "historical_states": 446175,
+      "sidecars_read": 1031,
+      "empty_sidecars": [],
+      "validation_mismatches": {
+        "elapsed_s": 0,
+        "fe_tick": 0,
+        "ct_alive": 0,
+        "t_alive": 0,
+        "ct_hp": 0,
+        "t_hp": 0,
+        "ct_on_site": 0,
+        "t_on_site": 0,
+        "ct_spread": 0,
+        "t_spread": 0,
+        "ct_z_spread": 0,
+        "t_z_spread": 0,
+        "ct_min_dA@historical_centers": 0,
+        "ct_min_dB@historical_centers": 0,
+        "ct_mean_dA@historical_centers": 0,
+        "ct_mean_dB@historical_centers": 0,
+        "t_min_dA@historical_centers": 0,
+        "t_min_dB@historical_centers": 0,
+        "t_mean_dA@historical_centers": 0,
+        "t_mean_dB@historical_centers": 0,
+        "tokens_changed_where_historical_complete": 0
+      },
+      "validation_failures": {},
+      "token_rows_repaired": 39603,
+      "token_rows_repaired_recordings": 114,
+      "token_rows_incomplete_after": 0,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": {
+          "train": 4,
+          "validation": 4,
+          "test": 4
+        },
+        "ct_eliminated": {
+          "train": 6456,
+          "validation": 1323,
+          "test": 1200
+        },
+        "t_eliminated_no_plant": {
+          "train": 8132,
+          "validation": 1847,
+          "test": 1687
+        },
+        "bomb_timer_expired": {
+          "train": 3892,
+          "validation": 868,
+          "test": 700
+        },
+        "round_clock_expired": {
+          "train": 2217,
+          "validation": 474,
+          "test": 439
+        },
+        "roster_over_five": {
+          "train": 377,
+          "validation": 0,
+          "test": 0
+        }
+      },
+      "excluded_states": 27508,
+      "partitions": {
+        "train": {
+          "states_before": 311451,
+          "states_after": 291958,
+          "rounds_after": 15577,
+          "matches_before": 722,
+          "matches_after": 722
+        },
+        "validation": {
+          "states_before": 68114,
+          "states_after": 63880,
+          "rounds_after": 3396,
+          "matches_before": 154,
+          "matches_after": 154
+        },
+        "test": {
+          "states_before": 66610,
+          "states_after": 62829,
+          "rounds_after": 3340,
+          "matches_before": 155,
+          "matches_after": 155
+        }
+      },
+      "rounds_freeze_end_unobserved": 3,
+      "output_rows": 418667,
+      "output_sha256": "de2b5359c57908dfde3a233475d15374121e4fdadb9032b26b065fdcaff3bfd1",
+      "seconds": 35.8
+    }
+  },
+  "inputs": {
+    "geometry": "2023ff957467d9c04204139e66c1a2f4f29ffc292e7a45ae4a3391e19e401f42",
+    "hist_centers": "d780c7989598b73af502561048c81a6b94d807203bedc34cfe8d52ca8e8ce3fe",
+    "splits": "d76f2d4790c32c9543323753dedc344698baff90229aacaf4cb4fba2e5c2961b",
+    "code": "f38ab46915d349aab7771d412f44dc5f2d20916ddddd6bde6913b3a062de5695"
+  }
+}

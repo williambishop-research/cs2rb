@@ -1,0 +1,17 @@
+{
+  "identity_sha256": "0ee8e82b06dcf34f25a2b996e16bea348f39f655021e8a704fb7b938b6f49241",
+  "job": {
+    "map": "de_inferno",
+    "scale": 1.0,
+    "seed": 31337,
+    "model": "deepsets",
+    "job_id": "de_inferno__s1__seed31337__deepsets"
+  },
+  "files": {
+    "metrics.json": "28caf0088e1896d8e176384c38aaa5262b91a45a067f9ddd10f9089e1fc31b82",
+    "test_predictions.parquet": "d2398142526137571c98937367aac730d1edca95cb0dfe1b64bb7c52a4a91e3b",
+    "training_matches.json": "6d86e627575bf79b85c4baa0e39cf93d9f74f56e0cc097896838e2b256801307",
+    "training_trace.json": "3aa09cf2c42e1ddd065a6ccf3317487e09ebf018ac3ee61c60da094ceba5bf5d",
+    "validation_predictions.parquet": "df046f83dbf06d23c000c316ac7c540e9a316e65a7ecff741a87ffd672ba947c"
+  }
+}
