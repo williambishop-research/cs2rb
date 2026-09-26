@@ -1,6 +1,6 @@
 # Data licence
 
-The CS2RB v1.0 data (the derived game-state tables, match and round metadata,
+The CS2RB v1.0 data (the derived game-state tables including the out-of-time holdout, match and round metadata,
 split assignments, bombsite geometry and the files under `evidence/`) are
 licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)**
 licence: https://creativecommons.org/licenses/by/4.0/

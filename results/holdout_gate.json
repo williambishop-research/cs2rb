@@ -1,0 +1,53 @@
+{
+  "de_dust2": {
+    "demos": 50,
+    "rows_rebuilt": 19679,
+    "rows_released": 19679,
+    "same_keys": true,
+    "column_mismatches": {}
+  },
+  "de_mirage": {
+    "demos": 50,
+    "rows_rebuilt": 18164,
+    "rows_released": 18164,
+    "same_keys": true,
+    "column_mismatches": {}
+  },
+  "de_inferno": {
+    "demos": 50,
+    "rows_rebuilt": 19252,
+    "rows_released": 19252,
+    "same_keys": true,
+    "column_mismatches": {}
+  },
+  "de_ancient": {
+    "demos": 50,
+    "rows_rebuilt": 17762,
+    "rows_released": 17762,
+    "same_keys": true,
+    "column_mismatches": {}
+  },
+  "de_nuke": {
+    "demos": 50,
+    "rows_rebuilt": 18841,
+    "rows_released": 18841,
+    "same_keys": true,
+    "column_mismatches": {}
+  },
+  "de_anubis": {
+    "demos": 50,
+    "rows_rebuilt": 19360,
+    "rows_released": 19360,
+    "same_keys": true,
+    "column_mismatches": {}
+  },
+  "de_overpass": {
+    "demos": 50,
+    "rows_rebuilt": 20179,
+    "rows_released": 20179,
+    "same_keys": true,
+    "column_mismatches": {}
+  },
+  "passed": true,
+  "db_sha256": "1caf20c5a400cde814736275455223802a8805d1f2728a54a56fdb69c425b110"
+}

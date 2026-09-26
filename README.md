@@ -16,6 +16,8 @@ Two aggregate models (XGBoost and an MLP, on 28 team features) and two set model
 | Set Transformer − XGBoost | −5.45 [−6.51, −4.34] | −2.10 [−2.84, −1.35] | +3.35 [+2.38, +4.30] |
 | Set Transformer − MLP | −2.31 [−2.81, −1.82] | −2.25 [−2.66, −1.85] | +0.07 [−0.44, +0.56] |
 
+**Confirmed on later, untouched data.** Before running it, we published a protocol ([benchmark/holdout_protocol.md](benchmark/holdout_protocol.md)) for scoring the same models on 1,536 matches played 19 August – 25 September 2026, after the corpus ends (1,192,077 states, six maps). The pre-registered primary estimate, the selected-pair gap at 100%, is **−1.73 × 10⁻³ [−2.23, −1.22]** on the holdout, against −1.67 on the same six maps' test period, so the advantage replicates. It also survives tuned aggregate baselines (−1.36 [−2.05, −0.69]). With the architecture held fixed, per-player spatial state adds nothing at 20% of the data and 0.85–0.89 × 10⁻³ at 100%.
+
 All pairs, per-map results and sensitivity checks are in the paper and in [results/](results/).
 
 ## Quick start
@@ -46,13 +48,15 @@ The label is `label_ct` (1 when CT wins the round). Use the 28 aggregate columns
 | Tables 2–3, B1–B4; Figure 1 inputs | `python benchmark/evaluate.py --run runs/v1_full --out analyses/v1_full` | `results/evaluation/` |
 | Section 5.3, Table 4, Figure 2, Table B5 | `python benchmark/secondary.py --run runs/v1_full --analysis analyses/v1_full --data data --out results/secondary` | `results/secondary/` |
 | Section 5.4, Figure 3, Tables B6–B7 (breakdown by game situation) | `python benchmark/breakdown.py --run runs/v1_full --analysis analyses/v1_full --data data --out results/breakdown` | `results/breakdown/` |
+| Section 5.5, Figure 4, Table 5, Tables B8–B9 (holdout; pre-registered) | `python benchmark/build/build_holdout.py ... --gate data` (construction gate), `... --out data_holdout` (build; needs the position files and a database copy), `python benchmark/holdout.py --data data --holdout data_holdout --run runs/v1_full --out runs/holdout_v1`, `python benchmark/holdout_eval.py --holdout-run runs/holdout_v1 --holdout data_holdout --run runs/v1_full --selection results/evaluation/selection.json --out results/holdout` | `results/holdout/`, `results/holdout_gate.json` |
+| Section 5.6, Table 6, Table B10 (tuned baselines, spatial ablation; pre-registered) | `python benchmark/stress_tuning.py --data data --out runs/stress_tuning`, `python benchmark/ablation_spatial.py --data data --out runs/ablation_spatial`, `python benchmark/robustness_eval.py --run runs/v1_full --stress runs/stress_tuning --ablation runs/ablation_spatial --selection results/evaluation/selection.json --out results/robustness` | `results/robustness/` |
 | Section 3.3 eligibility audit | `python benchmark/audit_eligibility.py` | `results/eligibility_audit.json` |
 | All tables and figures in the paper | `python paper/make_assets.py` | `paper/CS2RB.md`, `paper/figures/` |
 | PDF | `python paper/build_pdf.py` | `paper/CS2RB.pdf` |
 
 Every completed fit records the SHA-256 of its inputs, code and protocol (`results/run.json`). `run_grid.py --resume` refuses to continue a run whose code, data or package versions differ. On the same machine and package versions, refitting a job reproduces its predictions bit for bit; we checked this for XGBoost, MLP and Deep Sets fits. Across machines and library builds, expect agreement within the reported seed spread rather than identical losses.
 
-The complete run directory, with per-state test and validation predictions for all 336 fits, is in the archive (https://doi.org/10.5281/zenodo.22970589, `cs2rb_v1_predictions.zip`). Unzipped into `runs/`, it lets `evaluate.py` and `secondary.py` verify every fit's hashes and rerun the analyses without refitting.
+The complete run directory, with per-state test and validation predictions for all 336 fits, is in the archive (https://doi.org/10.5281/zenodo.22970589, `cs2rb_v1_predictions.zip`). Unzipped into `runs/`, it lets `evaluate.py` and `secondary.py` verify every fit's hashes and rerun the analyses without refitting. The holdout state tables are in `cs2rb_v1_holdout_data.zip` (unzip to `data_holdout/`), and the holdout, tuning and ablation runs are in `cs2rb_v1_checks_runs.zip` (unzip to `runs/`).
 
 `benchmark/build/` holds the code that built the state tables from the (unreleased) per-second position files and the checks it ran. It documents construction; it cannot be rerun without those files. `benchmark/audit_eligibility.py` reruns the eligibility audit from the released `evidence/` tables.
 
@@ -62,6 +66,7 @@ The complete run directory, with per-state test and validation predictions for a
 benchmark/        run_grid.py  models.py  evaluate.py  secondary.py  protocol.json  audit_eligibility.py
 benchmark/build/  construction code for the state tables (documentation)
 data/             metadata, splits, geometry, manifest, checksums (state tables: see archive)
+data_holdout/     holdout metadata, build report, checksums (state tables: see archive)
 evidence/         raw-event canary rounds, stored timestamps and freeze diagnostics used by the audit
 results/          run.json, per-fit metrics/traces, evaluation, secondary analyses, eligibility audit
 paper/            CS2RB.md/.pdf, SSAC27_abstract.md/.pdf, figures, build scripts

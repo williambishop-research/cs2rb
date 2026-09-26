@@ -87,6 +87,10 @@ Intended use: research on round-win probability models and their use in reviewin
 
 The states contain in-game observations from professional, publicly broadcast matches. They contain no player names, SteamIDs or team names; `match_id` and `demo_id` are internal integers. The release contains only derived, subsampled numeric features, as in earlier esports trajectory datasets. No demo files are redistributed. For corrections or removal requests, open an issue at https://github.com/williambishop-research/cs2rb.
 
+## Out-of-time holdout
+
+A second, separate set of states, built after the main study was complete and analysed under a protocol published beforehand ([benchmark/holdout_protocol.md](benchmark/holdout_protocol.md)). It contains every recording on Dust2, Mirage, Inferno, Ancient, Nuke and Anubis from matches played 19 August – 25 September 2026: 1,536 matches, 3,182 recordings, 68,348 rounds and 1,192,077 states. No Overpass matches were recorded in that window. The holdout uses the same extraction, bombsite centres and eligibility rules as v1.0. Rebuilding 350 random corpus recordings through the holdout path reproduced their released rows exactly (`results/holdout_gate.json`). The files are in `data_holdout/`, with the same schema; the state tables are archived as `cs2rb_v1_holdout_data.zip`. Use the holdout only for evaluation, never for training or model selection.
+
 ## Changes from the unreleased v0.1 export
 
 v0.1 (August 2026) was used for the earlier drafts of the paper and was never published. v1.0 regenerates every state from the same position files and reproduces every v0.1 feature exactly, except:

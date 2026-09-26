@@ -8,3 +8,4 @@ data/** -text
 evidence/** -text
 results/** -text
 benchmark/** -text
+data_holdout/** -text

@@ -6,7 +6,7 @@ Version 1.0 · September 2026 · Data: https://doi.org/10.5281/zenodo.22970589 �
 
 ## Abstract
 
-Round-win probabilities help analysts review Counter-Strike rounds. We ask how the advantage of individual-player models over aggregate models changes as training data grow. CS2RB v1.0 contains 4,768,984 live states from 12,742 professional Counter-Strike 2 map recordings (5,725 matches on seven maps, January–August 2026). States in which the round is already decided are removed by rules that use only information available at that moment, validated against exact events re-parsed from raw recordings. Under frozen chronological splits, we fit XGBoost and a multilayer perceptron (MLP) on 28 team-level features. We also fit Deep Sets and a Set Transformer, which add one vector per player. Each model is trained on 20%, 50% and 100% of the training matches with four seeds (336 fits), and models are selected on validation data only. Pooled over maps, the validation-selected set model has lower test log loss than the selected aggregate model at every scale: by 2.33 × 10⁻³ (95% interval 1.90–2.78) at 20% and 1.74 × 10⁻³ (1.09–2.41) at 100%. The change, +0.59 × 10⁻³ (−0.17 to +1.35), is not distinguishable from zero. Against XGBoost alone, the advantage narrows by about 3.3 × 10⁻³, because gradient boosting gains most from additional data; against the MLP it does not change. In a pre-specified descriptive breakdown, the advantage concentrates before the bomb plant and after the opening kills, and is absent at round start and in pistol rounds. The player-level advantage is small, persistent and varies by map. The data, code and outputs of all 336 fits are public.
+Round-win probabilities help analysts review Counter-Strike rounds. We ask how the advantage of individual-player models over aggregate models changes as training data grow. CS2RB v1.0 contains 4,768,984 live states from 12,742 professional Counter-Strike 2 map recordings (5,725 matches on seven maps, January–August 2026). States in which the round is already decided are removed by rules that use only information available at that moment, validated against exact events re-parsed from raw recordings. Under frozen chronological splits, we fit XGBoost and a multilayer perceptron (MLP) on 28 team-level features. We also fit Deep Sets and a Set Transformer, which add one vector per player. Each model is trained on 20%, 50% and 100% of the training matches with four seeds (336 fits), and models are selected on validation data only. Pooled over maps, the validation-selected set model has lower test log loss than the selected aggregate model at every scale: by 2.33 × 10⁻³ (95% interval 1.90–2.78) at 20% and 1.74 × 10⁻³ (1.09–2.41) at 100%. The change, +0.59 × 10⁻³ (−0.17 to +1.35), is not distinguishable from zero. Against XGBoost alone, the advantage narrows by about 3.3 × 10⁻³, because gradient boosting gains most from additional data; against the MLP it does not change. In a pre-specified descriptive breakdown, the advantage concentrates before the bomb plant and after the opening kills, and is absent at round start and in pistol rounds. In a pre-registered holdout of 1,192,077 states from 1,536 later matches that no part of the study had seen, the same models reproduce the result: the selected gap at full scale is 1.73 × 10⁻³ (1.22–2.23). The advantage survives tuning the aggregate models (1.36 × 10⁻³). At a fixed architecture, per-player spatial state adds nothing at 20% of the data but 0.85–0.89 × 10⁻³ at 100%. The player-level advantage is small, persistent and varies by map. The data, code and outputs of all fits are public.
 
 ## 1 Introduction
 
@@ -21,8 +21,9 @@ CS2RB examines the question in the current game, using one corpus, common evalua
 - **A corpus of live CS2 round states.** It holds 4,768,984 states from 12,742 professional map recordings. Each state is checked by rules that use only information available at that moment, and the checks are validated against exact events re-parsed from raw recordings.
 - **A fixed comparison protocol.** It uses frozen chronological splits, nested training subsets, four optimisation seeds per model and validation-only model selection, with paired match-level uncertainty for every contrast.
 - **A scaling result, reported per architecture.** Both set models have lower test loss than both aggregate models at every training scale in the pooled estimates. Their advantage over XGBoost narrows as data grow, but their advantage over the validation-selected aggregate model does not change detectably.
+- **A pre-registered confirmation.** On 1,536 later matches that no part of the study had seen, analysed under a protocol published before the analysis ran, the same models reproduce the result. It also survives tuned aggregate baselines and a same-architecture ablation of player space.
 
-Section 2 reviews related work. Section 3 describes the corpus and its eligibility checks, and Section 4 the experimental protocol. Section 5 reports the scaling trajectories and full-scale results, and Section 6 a round-review use of the models. Section 7 discusses limitations.
+Section 2 reviews related work. Section 3 describes the corpus and its eligibility checks, and Section 4 the experimental protocol. Section 5 reports the scaling trajectories, full-scale results, a breakdown by game situation, the holdout confirmation and two robustness checks, and Section 6 a round-review use of the models. Section 7 discusses limitations.
 
 ## 2 Related work
 
@@ -98,7 +99,7 @@ The two aggregate models are XGBoost and a two-layer multilayer perceptron (MLP)
 
 Training matches are ordered by date and match ID, permuted once with seed 42, and the first 20%, 50% and 100% form nested training subsets. Validation and test states are the same at every scale, and every model sees the same subsets. Each model is fitted with four optimisation seeds (7, 123, 2024, 31337) at every map and scale: 7 maps × 3 scales × 4 seeds × 4 models = 336 fits. The benchmark score is the mean of the four individual-fit test losses; seed standard deviations are reported separately.
 
-We report every architecture and all four fixed aggregate/set pairs. For a single summary per cell, a *selected* pair takes the aggregate model and the set model with the lower mean validation loss; test data never select a model. The protocol, model code and selection rule were fixed on 6 September 2026, before the v1.0 corpus was built. An earlier, unreleased version of this study had used the same test period, so the results are a corrected retrospective evaluation rather than a prospective one.
+We report every architecture and all four fixed aggregate/set pairs. For a single summary per cell, a *selected* pair takes the aggregate model and the set model with the lower mean validation loss; test data never select a model. The protocol, model code and selection rule were fixed on 6 September 2026, before the v1.0 corpus was built. An earlier, unreleased version of this study had used the same test period, so the results in Sections 5.1–5.4 are a corrected retrospective evaluation. Section 5.5 tests them prospectively on later matches, under a protocol published before that analysis ran.
 
 ### 4.4 Uncertainty
 
@@ -186,6 +187,59 @@ Disagreements between the two full-scale ensembles show the same asymmetry from 
 **Figure 3. Full-scale gap by game situation** (validation-selected pair, seven maps pooled; slice share of test states in brackets). The dashed line is the overall gap. Slices overlap and describe one test period; slices under 0.5% of states are in Table B6 only.
 <!-- FIGURE3:end -->
 
+### 5.5 Confirmation on later, untouched matches
+
+The test period above had been used in an earlier version of this study. To check the result on data that no part of the study had seen, we pre-registered a holdout analysis and pushed its protocol to the public repository before running it (`benchmark/holdout_protocol.md`). The protocol fixed the data, the models, the estimands and the wording of the verdict.
+
+- **The holdout.** It contains every recording on six of the maps from matches played between 19 August and 25 September 2026, after the corpus ends; Overpass has none. That is 1,536 matches, 3,182 recordings, 68,348 rounds and 1,192,077 live states.
+- **Same construction.** The holdout is built by the same code as the corpus. Rebuilding 350 randomly chosen corpus recordings through the holdout path reproduced their released rows exactly.
+- **Same models.** We refitted the 288 six-map models with the published code, training subsets and seeds. Each refit reproduced its published validation predictions bit for bit before its holdout predictions were used. The aggregate/set pairs are the published validation-selected pairs.
+
+The pre-registered primary estimate is the pooled selected-pair gap at full scale. On the holdout it is −1.73 × 10⁻³ (−2.23 to −1.22), against −1.67 × 10⁻³ (−2.37 to −0.95) on the same six maps' original test period. Its upper bound is below zero, so by the protocol's rule the player-level advantage replicates on the later period.
+
+The rest of the pattern replicates as well (Table 5, Figure 4). The advantage over XGBoost narrows with data (changes +3.21 and +3.08 × 10⁻³ for Deep Sets and the Set Transformer), while the advantage over the MLP does not (−0.27 and −0.40). The selected pair's change is +0.07 (−0.51 to +0.66). A set model again has the lowest full-scale loss on every map, and the selected gap is negative on all six maps; its interval excludes zero on Mirage, Ancient, Nuke and Anubis (Table B8). Weighting rounds equally, or removing the last 10 s of each round, gives full-scale gaps of −2.00 and −1.87 × 10⁻³ (Table B9).
+
+<!-- TABLE5:start -->
+**Table 5. Out-of-time holdout** (matches played 19 August – 25 September 2026; six maps pooled), set model minus aggregate model, test log loss × 10⁻³ (95% match-bootstrap interval), beside the same six maps' original test period. Same fitted models and validation-selected pairs.
+
+| Pair | Holdout, 20% | Holdout, 100% | Holdout change | Test period, 100% | Test period change |
+|---|---:|---:|---:|---:|---:|
+| Validation-selected | −1.80 [−2.13, −1.47] | −1.73 [−2.23, −1.22] | +0.07 [−0.51, +0.66] | −1.67 [−2.37, −0.95] | +0.75 [−0.06, +1.56] |
+| Deep Sets − XGBoost | −4.56 [−5.40, −3.75] | −1.35 [−1.89, −0.80] | +3.21 [+2.51, +3.93] | −1.58 [−2.34, −0.82] | +3.30 [+2.34, +4.27] |
+| Set Transformer − XGBoost | −4.74 [−5.57, −3.92] | −1.66 [−2.21, −1.10] | +3.08 [+2.39, +3.81] | −1.93 [−2.67, −1.16] | +3.29 [+2.32, +4.27] |
+| Deep Sets − MLP | −1.37 [−1.71, −1.02] | −1.64 [−1.96, −1.32] | −0.27 [−0.66, +0.12] | −1.88 [−2.31, −1.43] | +0.03 [−0.47, +0.53] |
+| Set Transformer − MLP | −1.54 [−1.91, −1.18] | −1.94 [−2.26, −1.63] | −0.40 [−0.78, −0.03] | −2.22 [−2.64, −1.80] | +0.02 [−0.49, +0.52] |
+<!-- TABLE5:end -->
+
+<!-- FIGURE4:start -->
+![Figure 4](figures/figure4_holdout.png)
+
+**Figure 4. The same models on the original test period and on the later holdout** (six maps pooled): set-model minus aggregate-model test log loss (× 10⁻³) by share of training matches, four-seed means with 95% match-bootstrap intervals.
+<!-- FIGURE4:end -->
+
+### 5.6 Tuned baselines and a same-architecture check
+
+The same pre-registration covered two further checks (Table 6).
+
+- **Tuned aggregate models.** We tuned XGBoost and the MLP on validation loss over small grids (Table B10), leaving the set models untuned. Tuning lowered XGBoost's full-scale test loss by 0.3–0.9 × 10⁻³ and moved the MLP's by −1.1 to +0.5 × 10⁻³. Against the better tuned aggregate model, the selected set model's advantage is −1.36 × 10⁻³ (−2.05 to −0.69), compared with −1.74 against the untuned models. The chosen XGBoost configurations sat at the grid's shallowest depth on every map and at its lower learning rate on six maps, so a wider search could narrow the gap further.
+- **Player space at a fixed architecture.** We refitted both set models with every player's position, view direction and velocity set to zero, keeping side, health and the alive flag. At 20% of training matches, removing player space makes no difference (+0.09 and −0.07 × 10⁻³). At full scale the full models are better, by 0.89 and 0.85 × 10⁻³. The value of per-player spatial state therefore appears only with more data. Even without it, the set models beat the MLP at full scale, by 1.00 and 1.39 × 10⁻³. The rest of their advantage therefore comes from the set architecture together with per-player health and alive status.
+
+<!-- TABLE6:start -->
+**Table 6. Pre-registered robustness checks**, seven maps pooled, test log loss difference × 10⁻³ (95% match-bootstrap interval). "Without player space": the same architecture with every player token's position, view direction and velocity set to zero (side, health and alive flag kept).
+
+| Comparison | Scale | Difference |
+|---|---:|---:|
+| Selected set model − better tuned aggregate model | 100% | −1.36 [−2.05, −0.69] |
+| Selected set model − tuned XGBoost | 100% | −1.46 [−2.19, −0.75] |
+| Selected set model − tuned MLP | 100% | −2.07 [−2.48, −1.67] |
+| Deep Sets − Deep Sets without player space | 20% | +0.09 [−0.19, +0.38] |
+| Deep Sets − Deep Sets without player space | 100% | −0.89 [−1.19, −0.59] |
+| Set Transformer − Set Transformer without player space | 20% | −0.07 [−0.45, +0.30] |
+| Set Transformer − Set Transformer without player space | 100% | −0.85 [−1.16, −0.54] |
+| Deep Sets without player space − MLP | 100% | −1.00 [−1.38, −0.63] |
+| Set Transformer without player space − MLP | 100% | −1.39 [−1.73, −1.06] |
+<!-- TABLE6:end -->
+
 ## 6 Using the models for round review
 
 For round review, one forecast per state is more useful than four. At full scale we average the four seed models of each family and choose, on validation loss only, one aggregate ensemble and one player-level ensemble. The chosen aggregate ensemble is the MLP on every map; the chosen player-level ensemble is the Set Transformer on six maps and Deep Sets on Anubis. Table 4 reports their test performance. Averaging seeds lowers test loss by 1.4–2.5 × 10⁻³ relative to single fits. The player-level ensemble has lower test loss than the aggregate ensemble on all seven maps, by 0.6–4.3 × 10⁻³. Both are well calibrated: the expected calibration error over ten probability bins is 0.007–0.016 on every map.
@@ -227,17 +281,17 @@ The breakdown in Section 5.4 locates the advantage in the middle of the round: b
 
 Unlike ESTA [4], where an aggregate MLP beat both set models, both set models here beat the MLP at every scale. The two studies differ in game, sampling rate, features and model settings, so this difference cannot be attributed to any one cause. An earlier, unreleased version of this study, built before the corrections in Section 3, suggested that aggregate models caught up with the set models on some maps. One of those corrections restored living players that the earlier export had dropped from the player tokens in 8% of recordings. That defect handicapped only the set models.
 
-The benchmark uses single states at about five-second intervals. It does not include weapons, utility, money after freeze end, sound or view dynamics within the interval. The set models receive more information and a different architecture than the aggregate models, so the comparison is between complete systems. A same-architecture comparison with and without player tokens would isolate the value of the inputs more directly.
+The benchmark uses single states at about five-second intervals. It does not include weapons, utility, money after freeze end, sound or view dynamics within the interval. The set models receive more information and a different architecture than the aggregate models, so the main comparison is between complete systems. The same-architecture check in Section 5.6 separates the two only partly: removing player space keeps per-player health and alive status, and it tests two small architectures.
 
-The generality of the results is bounded. They come from one corpus, one period of professional play and one nested ordering of training matches. The model settings are small, and larger or differently regularised models could behave differently. Differences between maps combine layout, sample size, teams and period, and do not identify a mechanism. The eligibility rules cannot see bomb defusals, leaving about 0.7% of states in the seconds after a defusal. Because the test period had been used in an earlier version of this study, a later, untouched period would give a stronger confirmation.
+The generality of the results is bounded. They come from one corpus and one nested ordering of training matches. The holdout extends the test to five further weeks of play on six maps, but it is a short window close to the training period. The set models are small and untuned. The aggregate models were tuned only over small grids, and XGBoost's chosen settings sat at the grid's edge, so larger or differently regularised models could behave differently. Differences between maps combine layout, sample size, teams and period, and do not identify a mechanism. The eligibility rules cannot see bomb defusals, leaving about 0.7% of states in the seconds after a defusal.
 
 ## 8 Conclusion
 
-CS2RB provides validated live round states for Counter-Strike 2, a fixed evaluation protocol and the outputs of all 336 fits. On this benchmark, individual-player set models predict round outcomes slightly better than aggregate models at every training size tested. Their advantage over gradient boosting narrows as data grow, but their advantage over the validation-selected aggregate model does not change detectably. Answering the representation question therefore requires more than one aggregate baseline. The natural next steps are a later, untouched test period and a richer state, adding utility, weapons and economy, to test whether the player-level advantage grows when the state carries more of what players see.
+CS2RB provides validated live round states for Counter-Strike 2, a fixed evaluation protocol and the outputs of all 336 fits. On this benchmark, individual-player set models predict round outcomes slightly better than aggregate models at every training size tested. Their advantage over gradient boosting narrows as data grow, but their advantage over the validation-selected aggregate model does not change detectably. The result replicates on later, untouched matches under a pre-registered protocol. Per-player spatial state begins to pay off only with more training data. Answering the representation question therefore requires more than one aggregate baseline and more than one data scale. A natural next step is a richer state, adding utility, weapons and economy, to test whether the player-level advantage grows when the state carries more of what players see.
 
 ## Data and code availability
 
-The CS2RB v1.0 state tables, match and round metadata, frozen splits, bombsite geometry and checksums are archived at https://doi.org/10.5281/zenodo.22970589 under CC BY 4.0, together with the complete 336-fit run (per-state validation and test predictions, metrics, training traces and provenance hashes). The repository https://github.com/williambishop-research/cs2rb contains the construction, training and evaluation code, the protocol, the eligibility evidence, and every per-fit metric, training trace and analysis output reported here, under the MIT licence. The repository README maps each table and figure to the command that produces it.
+The CS2RB v1.0 state tables, match and round metadata, frozen splits, bombsite geometry and checksums are archived at https://doi.org/10.5281/zenodo.22970589 under CC BY 4.0, together with the complete 336-fit run (per-state validation and test predictions, metrics, training traces and provenance hashes), the out-of-time holdout state tables, and the holdout, tuning and ablation runs. The repository https://github.com/williambishop-research/cs2rb contains the construction, training and evaluation code, the protocol, the eligibility evidence, and every per-fit metric, training trace and analysis output reported here, under the MIT licence. The repository README maps each table and figure to the command that produces it.
 
 ## Acknowledgments
 
@@ -407,6 +461,40 @@ Generative AI tools assisted with software development, analysis and editing. Th
 | ≥ 10 points | 26,229 (3.7%) | 0.6229 | 0.6447 | −21.76 [−29.96, −13.85] | 50.7% [49.5, 51.9] |
 | ≥ 20 points | 1,837 (0.3%) | 0.6446 | 0.7063 | −61.70 [−111.22, −12.94] | 53.3% [49.2, 57.4] |
 <!-- BREAKDOWN_TABLES:end -->
+
+<!-- HOLDOUT_TABLES:start -->
+**Table B8. Holdout results by map**: full-scale test log loss of each model (mean of four seeds) and the validation-selected gap at 100% and its change from 20% (× 10⁻³, 95% interval).
+
+| Map | XGBoost | MLP | Deep Sets | Set Transformer | Selected gap, 100% | Selected change |
+|---|---:|---:|---:|---:|---:|---:|
+| Dust2 | 0.4537 | 0.4534 | 0.4532 | 0.4528 | −0.81 [−1.96, +0.32] | +0.26 [−1.06, +1.57] |
+| Mirage | 0.4490 | 0.4490 | 0.4484 | 0.4479 | −1.15 [−2.29, −0.04] | −0.22 [−1.50, +1.04] |
+| Inferno | 0.4577 | 0.4585 | 0.4559 | 0.4566 | −1.09 [−2.66, +0.51] | +1.44 [−0.42, +3.31] |
+| Ancient | 0.4445 | 0.4450 | 0.4435 | 0.4425 | −2.02 [−3.25, −0.79] | +0.43 [−0.95, +1.81] |
+| Nuke | 0.4553 | 0.4560 | 0.4518 | 0.4510 | −4.30 [−5.68, −2.90] | −0.91 [−2.35, +0.55] |
+| Anubis | 0.4609 | 0.4612 | 0.4599 | 0.4603 | −1.32 [−2.09, −0.55] | −0.85 [−1.88, +0.19] |
+
+**Table B9. Holdout sensitivity**, validation-selected pair, six maps pooled (× 10⁻³, 95% interval).
+
+| Version | Gap at 100% | Change, 20% → 100% |
+|---|---:|---:|
+| Round-weighted | −2.00 [−2.46, −1.53] | −0.53 [−1.07, 0.00] |
+| Last 10 s of each round removed | −1.87 [−2.39, −1.34] | −0.05 [−0.66, +0.55] |
+<!-- HOLDOUT_TABLES:end -->
+
+<!-- ROBUSTNESS_TABLES:start -->
+**Table B10. Tuned aggregate baselines by map**: test log loss before → after tuning (mean of four seeds), the configuration chosen on validation loss, and the tuned family with the lower validation loss.
+
+| Map | XGBoost | XGBoost chosen | MLP | MLP chosen | Better tuned |
+|---|---:|---|---:|---|---|
+| Dust2 | 0.4510 → 0.4507 | depth 5, lr 0.03, mcw 1 | 0.4517 → 0.4517 | 128×128, α 0.0001 | XGBoost |
+| Mirage | 0.4488 → 0.4484 | depth 5, lr 0.03, mcw 1 | 0.4498 → 0.4498 | 128×128, α 0.001 | XGBoost |
+| Inferno | 0.4604 → 0.4596 | depth 5, lr 0.03, mcw 1 | 0.4615 → 0.4620 | 256×256, α 0.0001 | XGBoost |
+| Ancient | 0.4478 → 0.4469 | depth 5, lr 0.03, mcw 10 | 0.4483 → 0.4472 | 256×256, α 0.0001 | XGBoost |
+| Nuke | 0.4518 → 0.4510 | depth 5, lr 0.03, mcw 1 | 0.4516 → 0.4516 | 256×256, α 0.001 | XGBoost |
+| Anubis | 0.4490 → 0.4484 | depth 5, lr 0.03, mcw 1 | 0.4465 → 0.4465 | 64×64, α 0.001 | XGBoost |
+| Overpass | 0.4519 → 0.4511 | depth 5, lr 0.1, mcw 1 | 0.4506 → 0.4500 | 128×128, α 0.0001 | MLP |
+<!-- ROBUSTNESS_TABLES:end -->
 
 ## Appendix C. Model settings
 

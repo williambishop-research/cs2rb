@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "corpus_end_utc": "2026-08-18 17:25:00",
+  "holdout_end": "2026-09-25 23:59:59",
+  "db_sha256": "1caf20c5a400cde814736275455223802a8805d1f2728a54a56fdb69c425b110",
+  "code_sha256": "b57d363c2be95d287e1604c18298447132487f9180a921096c9fa69ff533c25d",
+  "rebuild_states_sha256": "f38ab46915d349aab7771d412f44dc5f2d20916ddddd6bde6913b3a062de5695",
+  "geometry_sha256": "3fdce026b3c6b8db8dcf8da023b4fe3065afc26cf2b8fe9ef3c40abcc95a232c",
+  "maps": {
+    "de_dust2": {
+      "recordings_in_db": 690,
+      "missing_sidecars": [],
+      "empty_after_extraction": [],
+      "recordings": 690,
+      "matches": 690,
+      "rounds": 14583,
+      "states": 261314,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": 27,
+        "ct_eliminated": 6507,
+        "t_eliminated_no_plant": 6682,
+        "bomb_timer_expired": 4315,
+        "round_clock_expired": 1417,
+        "roster_over_five": 202,
+        "excluded_states": 17976
+      }
+    },
+    "de_mirage": {
+      "recordings_in_db": 616,
+      "missing_sidecars": [],
+      "empty_after_extraction": [],
+      "recordings": 616,
+      "matches": 616,
+      "rounds": 13333,
+      "states": 224726,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": 13,
+        "ct_eliminated": 5727,
+        "t_eliminated_no_plant": 7133,
+        "bomb_timer_expired": 3424,
+        "round_clock_expired": 1226,
+        "roster_over_five": 21,
+        "excluded_states": 16553
+      }
+    },
+    "de_inferno": {
+      "recordings_in_db": 458,
+      "missing_sidecars": [],
+      "empty_after_extraction": [],
+      "recordings": 458,
+      "matches": 458,
+      "rounds": 9660,
+      "states": 182519,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": 9,
+        "ct_eliminated": 3802,
+        "t_eliminated_no_plant": 4306,
+        "bomb_timer_expired": 3455,
+        "round_clock_expired": 1009,
+        "roster_over_five": 10,
+        "excluded_states": 11724
+      }
+    },
+    "de_ancient": {
+      "recordings_in_db": 577,
+      "missing_sidecars": [],
+      "empty_after_extraction": [],
+      "recordings": 577,
+      "matches": 577,
+      "rounds": 12444,
+      "states": 201981,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": 27,
+        "ct_eliminated": 5516,
+        "t_eliminated_no_plant": 5813,
+        "bomb_timer_expired": 3353,
+        "round_clock_expired": 897,
+        "roster_over_five": 78,
+        "excluded_states": 14754
+      }
+    },
+    "de_nuke": {
+      "recordings_in_db": 499,
+      "missing_sidecars": [],
+      "empty_after_extraction": [],
+      "recordings": 499,
+      "matches": 499,
+      "rounds": 10833,
+      "states": 187580,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": 4,
+        "ct_eliminated": 4323,
+        "t_eliminated_no_plant": 5999,
+        "bomb_timer_expired": 2770,
+        "round_clock_expired": 1196,
+        "roster_over_five": 10,
+        "excluded_states": 13385
+      }
+    },
+    "de_anubis": {
+      "recordings_in_db": 342,
+      "missing_sidecars": [],
+      "empty_after_extraction": [],
+      "recordings": 342,
+      "matches": 342,
+      "rounds": 7495,
+      "states": 133957,
+      "exclusions_by_reason": {
+        "freeze_end_unobserved": 11,
+        "ct_eliminated": 3351,
+        "t_eliminated_no_plant": 3369,
+        "bomb_timer_expired": 2394,
+        "round_clock_expired": 586,
+        "roster_over_five": 0,
+        "excluded_states": 9118
+      }
+    }
+  },
+  "seconds": 117.7
+}

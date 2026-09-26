@@ -343,6 +343,99 @@ def main():
         text = put(text, "FIGURE3", "![Figure 3](figures/figure3_breakdown.png)\n\n**Figure 3. Full-scale gap by game situation** "
                    "(validation-selected pair, seven maps pooled; slice share of test states in brackets). The dashed line is the overall "
                    "gap. Slices overlap and describe one test period; slices under 0.5% of states are in Table B6 only.")
+    # Out-of-time holdout (benchmark/holdout_eval.py)
+    ho_path = args.results / "holdout" / "holdout_results.json"
+    if ho_path.exists():
+        ho = json.loads(ho_path.read_text())
+        HO = [m for m in MAPS if m != "de_overpass"]
+
+        def hget(key, m, comp, est, s=None):
+            return contrast(m, comp, est, s, rows=ho[key])
+        comps = [("validation_selected_tracks", "Validation-selected")] + \
+                [(f"{t}_minus_{a}", f"{FAM[t]} − {FAM[a]}".replace("−", MINUS)) for t, a in PAIRS]
+        rows = []
+        for comp, lab in comps:
+            rows.append([lab] + [ci(hget("holdout_contrasts", "pooled_six_maps", comp, "gap", s)) for s in (0.2, 1.0)] +
+                        [ci(hget("holdout_contrasts", "pooled_six_maps", comp, "endpoint_change")),
+                         ci(hget("test_period_same_six_maps", "pooled_six_maps", comp, "gap", 1.0)),
+                         ci(hget("test_period_same_six_maps", "pooled_six_maps", comp, "endpoint_change"))])
+        text = put(text, "TABLE5", "**Table 5. Out-of-time holdout** (matches played 19 August – 25 September 2026; six maps pooled), "
+                   "set model minus aggregate model, test log loss × 10⁻³ (95% match-bootstrap interval), beside the same six maps' "
+                   "original test period. Same fitted models and validation-selected pairs.\n\n" +
+                   table(["Pair", "Holdout, 20%", "Holdout, 100%", "Holdout change", "Test period, 100%", "Test period change"], rows))
+        rows = []
+        mtab = {(r["map"], r["scale"], r["model"]): r for r in ho["holdout_model_table"]}
+        for m in HO:
+            g = hget("holdout_contrasts", m, "validation_selected_tracks", "gap", 1.0)
+            c = hget("holdout_contrasts", m, "validation_selected_tracks", "endpoint_change")
+            rows.append([NAME[m]] + [ll(mtab[(m, 1.0, f)]["mean_log_loss"]) for f in FAM] + [ci(g), ci(c)])
+        b8 = ("**Table B8. Holdout results by map**: full-scale test log loss of each model (mean of four seeds) and the "
+              "validation-selected gap at 100% and its change from 20% (× 10⁻³, 95% interval).\n\n") + \
+            table(["Map"] + list(FAM.values()) + ["Selected gap, 100%", "Selected change"], rows)
+        rw = [ci(hget("holdout_round_weighted", "pooled_six_maps", "validation_selected_tracks", "gap", 1.0)),
+              ci(hget("holdout_round_weighted", "pooled_six_maps", "validation_selected_tracks", "endpoint_change"))]
+        tt = [ci(hget("holdout_tail_trim", "pooled_six_maps", "validation_selected_tracks", "gap", 1.0)),
+              ci(hget("holdout_tail_trim", "pooled_six_maps", "validation_selected_tracks", "endpoint_change"))]
+        b9 = ("**Table B9. Holdout sensitivity**, validation-selected pair, six maps pooled (× 10⁻³, 95% interval).\n\n" +
+              table(["Version", "Gap at 100%", "Change, 20% → 100%"],
+                    [["Round-weighted"] + rw, ["Last 10 s of each round removed"] + tt]))
+        text = put(text, "HOLDOUT_TABLES", b8 + "\n\n" + b9)
+        fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.6), sharey=True)
+        for ax, (key, pool, title) in zip(axes, [("test_period_same_six_maps", "pooled_six_maps", "Original test period (six maps)"),
+                                                 ("holdout_contrasts", "pooled_six_maps", "Holdout, 19 Aug – 25 Sep 2026")]):
+            ax.axhline(0, color="#888888", lw=0.7)
+            for k, (t, a) in enumerate(PAIRS):
+                pts = [hget(key, pool, f"{t}_minus_{a}", "gap", s) for s in scales]
+                ax.errorbar([x + (k - 1.5) * 1.6 for x in xs], [p["point"] * 1000 for p in pts],
+                            yerr=[[(p["point"] - p["lo95"]) * 1000 for p in pts], [(p["hi95"] - p["point"]) * 1000 for p in pts]],
+                            color=colors[(t, a)], marker="o", ms=2.8, lw=1.0, elinewidth=0.6, capsize=0,
+                            label=f"{FAM[t]} − {FAM[a]}".replace("−", MINUS))
+            ax.set_title(title, fontsize=8.5)
+            ax.set_xticks(xs)
+            ax.set_xticklabels([f"{int(x)}%" for x in xs])
+            ax.set_xlabel("Share of training matches")
+        axes[0].set_ylabel("Gap (× 10⁻³ log loss)")
+        axes[1].legend(frameon=False, fontsize=6.5, loc="lower right")
+        fig.tight_layout()
+        fig.savefig(args.figures / "figure4_holdout.png", dpi=300)
+        plt.close(fig)
+        text = put(text, "FIGURE4", "![Figure 4](figures/figure4_holdout.png)\n\n**Figure 4. The same models on the original test "
+                   "period and on the later holdout** (six maps pooled): set-model minus aggregate-model test log loss (× 10⁻³) by share "
+                   "of training matches, four-seed means with 95% match-bootstrap intervals.")
+    # Tuned baselines and spatial ablation (benchmark/robustness_eval.py)
+    rb_path = args.results / "robustness" / "robustness_results.json"
+    if rb_path.exists():
+        rb = json.loads(rb_path.read_text())
+        tb = {r["contrast"]: r for r in rb["tuned_baselines"]["pooled"]}
+        sa = {r["contrast"]: r for r in rb["spatial_ablation"]["pooled"]}
+        rows = [["Selected set model − better tuned aggregate model", "100%", ci(tb["selected_set_minus_better_tuned"])],
+                ["Selected set model − tuned XGBoost", "100%", ci(tb["selected_set_minus_tuned_xgboost"])],
+                ["Selected set model − tuned MLP", "100%", ci(tb["selected_set_minus_tuned_mlp"])],
+                ["Deep Sets − Deep Sets without player space", "20%", ci(sa["deepsets_full_minus_nospace_s0.2"])],
+                ["Deep Sets − Deep Sets without player space", "100%", ci(sa["deepsets_full_minus_nospace_s1"])],
+                ["Set Transformer − Set Transformer without player space", "20%", ci(sa["settransformer_full_minus_nospace_s0.2"])],
+                ["Set Transformer − Set Transformer without player space", "100%", ci(sa["settransformer_full_minus_nospace_s1"])],
+                ["Deep Sets without player space − MLP", "100%", ci(sa["deepsets_nospace_minus_mlp_s1"])],
+                ["Set Transformer without player space − MLP", "100%", ci(sa["settransformer_nospace_minus_mlp_s1"])]]
+        rows = [[r[0].replace("−", MINUS)] + r[1:] for r in rows]
+        text = put(text, "TABLE6", "**Table 6. Pre-registered robustness checks**, seven maps pooled, test log loss difference × 10⁻³ "
+                   "(95% match-bootstrap interval). \"Without player space\": the same architecture with every player token's position, "
+                   "view direction and velocity set to zero (side, health and alive flag kept).\n\n" +
+                   table(["Comparison", "Scale", "Difference"], rows, ["---", "---:", "---:"]))
+        rows = []
+        for r in rb["tuned_baselines"]["per_map"]:
+            cx, cm = r["chosen_configs"]["xgboost"], r["chosen_configs"]["mlp"]
+            rows.append([NAME[r["map"]],
+                         f"{ll(r['untuned_test_ll']['xgboost'])} → {ll(r['tuned_test_ll']['xgboost'])}",
+                         f"depth {cx['max_depth']}, lr {cx['learning_rate']}, mcw {cx['min_child_weight']}",
+                         f"{ll(r['untuned_test_ll']['mlp'])} → {ll(r['tuned_test_ll']['mlp'])}",
+                         f"{'×'.join(str(h) for h in cm['hidden'])}, α {cm['alpha']:g}",
+                         FAM[r["better_tuned"]]])
+        b10 = ("**Table B10. Tuned aggregate baselines by map**: test log loss before → after tuning (mean of four seeds), the "
+               "configuration chosen on validation loss, and the tuned family with the lower validation loss.\n\n" +
+               table(["Map", "XGBoost", "XGBoost chosen", "MLP", "MLP chosen", "Better tuned"], rows,
+                     ["---", "---:", "---", "---:", "---", "---"]))
+        text = put(text, "ROBUSTNESS_TABLES", b10)
     args.paper.write_text(text, encoding="utf-8")
     print("assets written")
 

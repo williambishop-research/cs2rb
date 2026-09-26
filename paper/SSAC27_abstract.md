@@ -6,11 +6,11 @@ Round-win probability models show Counter-Strike analysts how each kill, plant a
 
 ## Methods
 
-CS2RB v1.0 contains 4,768,984 states, sampled about every five seconds of live play, from 12,742 professional map recordings (5,725 matches, seven maps, January–August 2026). Real-time rules remove states in which the round is already decided. On 962 rounds re-parsed from raw recordings, the rules keep 99.9% of live states and leave 0.7% post-decision states. Matches are split chronologically per map (70/15/15). Two aggregate models (XGBoost and an MLP, on 28 team features) and two set models (Deep Sets and a Set Transformer, on the same features plus ten player vectors) are trained on nested 20%, 50% and 100% subsets of the training matches. With four seeds each, this gives 336 fits; models are chosen on validation data only. Gaps in test log loss carry 95% match-bootstrap intervals.
+CS2RB v1.0 contains 4,768,984 states, sampled about every five seconds of live play, from 12,742 professional map recordings (5,725 matches, seven maps, January–August 2026). Real-time rules remove states in which the round is already decided. On 962 rounds re-parsed from raw recordings, the rules keep 99.9% of live states and leave 0.7% post-decision states. Matches are split chronologically per map (70/15/15), and a pre-registered holdout of 1,536 later matches (19 August–25 September) tests the result on untouched data. Two aggregate models (XGBoost and an MLP, on 28 team features) and two set models (Deep Sets and a Set Transformer, on the same features plus ten player vectors) are trained on nested 20%, 50% and 100% subsets of the training matches. With four seeds each, this gives 336 fits; models are chosen on validation data only.
 
 ## Results
 
-Pooled over maps, both set models beat both aggregate models at every scale (Table 1, Figure 1). Against XGBoost the advantage shrinks by 60–65% as data grow, because gradient boosting gains most from more matches. Against the MLP it stays near 2 × 10⁻³. For the validation-selected pair, the advantage is 2.33 × 10⁻³ at 20% and 1.74 × 10⁻³ at 100%, a change indistinguishable from zero. A set model has the lowest full-scale loss on every map. A pre-specified breakdown places the edge before the bomb plant and after the opening kills; it vanishes at round start and in pistol rounds. Dropping each round's last 10 s, or weighting rounds equally, leaves the conclusions unchanged.
+Pooled over maps, both set models beat both aggregate models at every scale (Table 1, Figure 1). Against XGBoost the advantage shrinks by 60–65% as data grow, because gradient boosting gains most from more matches. Against the MLP it stays near 2 × 10⁻³. For the validation-selected pair, the advantage is 2.33 × 10⁻³ at 20% and 1.74 × 10⁻³ at 100%, a change indistinguishable from zero. On the holdout, the same models reproduce the full-scale advantage (1.73 × 10⁻³, 95% interval 1.22–2.23). The advantage survives tuned aggregate baselines, and per-player spatial state adds value only at full scale. A pre-specified breakdown places the edge before the bomb plant and after the opening kills.
 
 **Table 1.** Pooled test log loss, set model minus aggregate model (× 10⁻³; 95% interval). Negative favours the set model.
 
@@ -28,6 +28,6 @@ Pooled over maps, both set models beat both aggregate models at every scale (Tab
 
 ## Conclusion
 
-Individual-player models hold a small, persistent edge for round-win prediction in Counter-Strike 2. The apparent convergence with more data reflects gradient boosting's larger gain from data, not lost player-level information. Representation comparisons should report more than one aggregate baseline across training scales. Data, code and all 336 model outputs are public:
+Individual-player models hold a small, persistent edge for round-win prediction in Counter-Strike 2, replicated on later, untouched matches. The apparent convergence with more data reflects gradient boosting's larger gain from data, not lost player-level information. Representation comparisons should report more than one aggregate baseline across training scales. Data, code and all model outputs:
 
 https://github.com/williambishop-research/cs2rb
