@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Round-win probability models show Counter-Strike analysts how each kill, plant and rotation changes a round's outlook. Model builders can summarise each team in aggregate features or give the model every player's position, view and movement. Prior CS:GO work found aggregate models competitive. We ask how the advantage of individual-player models changes as training data grow, using a new public Counter-Strike 2 benchmark.
+Round-win probability models show Counter-Strike analysts how each kill, plant and rotation changes a round's outlook. Model builders can summarise each team in aggregate features or give the model every player's position, view and movement. Prior CS:GO work found aggregate models competitive. We ask how the advantage of individual-player models changes as training data grow, on a new public benchmark.
 
 ## Methods
 
@@ -28,6 +28,6 @@ Pooled over maps, both set models beat both aggregate models at every scale (Tab
 
 ## Conclusion
 
-Individual-player models hold a small, persistent edge for round-win prediction in Counter-Strike 2, replicated on later, untouched matches. The apparent convergence with more data reflects gradient boosting's larger gain from data, not lost player-level information. Representation comparisons should report more than one aggregate baseline across training scales. Data, code and all model outputs:
+Individual-player models hold a small, persistent edge for round-win prediction in Counter-Strike 2, replicated on later, untouched matches. The apparent convergence reflects gradient boosting's larger gain from data, not lost player-level information. For teams, analysts and broadcasters building live win-probability tools, player-level inputs pay off mainly in mid-round, pre-plant situations, and model comparisons need more than one aggregate baseline. Data and code:
 
 https://github.com/williambishop-research/cs2rb
